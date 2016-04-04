@@ -12,6 +12,41 @@ require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
+def create_helper_objects
+
+  @category = Category.create(name: "Eggs")
+
+  @farm = Farm.create(name:                  "Pro Egg Farm",
+                   email:                 "1@1.com",
+                   password:              '12345678',
+                   password_confirmation: "12345678")
+
+  @eggs = Item.create(name:    'Eggs',
+                   price:    0.20,
+                   quantity: 500,
+                   category: @category,
+                   farm:     @farm)
+
+  @restaurant1 = Restaurant.create(email:                 "1@2.com",
+                                   name:                  "Top Pastries",
+                                   password:              "12345678",
+                                   password_confirmation: "12345678")
+
+  DeliveryOption.create(name: "1st Class", price: 2.99)
+
+  @in_progress_status = Status.create(name: "In Progress")
+
+  @order = Order.new(restaurant: @restaurant1,
+                     delivery_option: DeliveryOption.first,
+                     status: @in_progress_status)
+
+
+
+  @line_item1 = @order.line_items.build(item: @eggs, quantity: 200)
+
+
+end
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
