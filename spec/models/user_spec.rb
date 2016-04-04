@@ -33,7 +33,8 @@ describe User do
       expect(User.count).to eq 0
     end
 
-    it "should not save users where password and password confirmation do not match" do
+    it "should not save users where password and password\
+       confirmation do not match" do
       expect(User.count).to eq 0
       @invalid_user2.save
       expect(@invalid_user2).to_not be_valid
@@ -45,5 +46,48 @@ describe User do
 
   end
 
+
+  describe Restaurant do
+
+    before do
+      @restaurant1 = Restaurant.new(email:                 "1@1.com",
+                                    password:              "12345678",
+                                    password_confirmation: "12345678")
+
+    end
+
+    it "must have a name present" do
+      expect(@restaurant1).to_not be_valid
+      @restaurant1.name = "Top Pastries"
+      expect(@restaurant1).to be_valid
+    end
+
+    it "should save type field as 'restaurant' \
+        when I create a restaurant user" do
+      expect(@restaurant1.type).to eq "restaurant"
+    end
+
+  end
+
+  describe Farm do
+    before do
+      @farm1 = Farm.new(email:                 "1@1.com",
+                        password:              "12345678",
+                        password_confirmation: "12345678")
+
+    end
+
+    it "must have a name present" do
+      expect(@farm1).to_not be_valid
+      @farm1.name = "Bob's Organic Farm"
+      expect(@farm1).to be_valid
+    end
+
+    it "should save type field as 'restaurant' \
+        when I create a restaurant user" do
+      expect(@farm1.type).to eq "farm"
+    end
+
+  end
 
 end
