@@ -36,10 +36,19 @@
         1,
         null
       ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/item_image.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
       "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/item.rb": [
         1,
         1,
         1,
+        1,
         null,
         1,
         1,
@@ -53,8 +62,8 @@
         1,
         null,
         1,
-        5,
-        5,
+        7,
+        7,
         null,
         null,
         1,
@@ -79,6 +88,6 @@
         null
       ]
     },
-    "timestamp": 1459785877
+    "timestamp": 1459787118
   }
 }

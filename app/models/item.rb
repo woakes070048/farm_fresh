@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
   belongs_to :farm
   belongs_to :category
+  has_many :images, class_name: 'ItemImage', foreign_key: :item_id
 
   validates_presence_of :name, :category, :farm
   validates :price, numericality: { greater_than: 0}

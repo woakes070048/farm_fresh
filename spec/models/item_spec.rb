@@ -108,4 +108,17 @@ describe Item, type: :model do
 
   end
 
+  describe "Finding images" do
+
+    before do
+
+    end
+
+    it "should be able to find all of its images" do
+
+    end
+
+  end
+
+
 end
