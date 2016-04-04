@@ -8,13 +8,15 @@ describe Category, type: :model do
   end
 
   it "should have a name" do
+    previous_count = Category.count
+
     invalid_category = Category.create
     expect(invalid_category).to_not be_valid
-    expect(Category.count).to eq 0
+    expect(Category.count).to eq previous_count
 
     valid_category = Category.create(name: "Dairy")
     expect(valid_category).to be_valid
-    expect(Category.count).to eq 1
+    expect(Category.count).to eq previous_count + 1
   end
 
   it "should be able to set a parent" do

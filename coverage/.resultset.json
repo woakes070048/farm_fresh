@@ -21,6 +21,9 @@
       "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/category.rb": [
         1,
         1,
+        1,
+        null,
+        1,
         null
       ],
       "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/favourite_farm.rb": [
@@ -46,6 +49,6 @@
         null
       ]
     },
-    "timestamp": 1459771231
+    "timestamp": 1459775817
   }
 }
