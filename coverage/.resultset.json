@@ -70,8 +70,8 @@
         1,
         null,
         1,
-        16,
-        16,
+        19,
+        19,
         null,
         null,
         1,
@@ -82,6 +82,9 @@
       ],
       "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/line_item.rb": [
         1,
+        1,
+        1,
+        null,
         1,
         1,
         null
@@ -149,6 +152,6 @@
         null
       ]
     },
-    "timestamp": 1459805257
+    "timestamp": 1459806642
   }
 }

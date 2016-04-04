@@ -3,37 +3,7 @@ require 'rails_helper'
 describe Order, type: :model do
 
   before do
-
-    @category = Category.create(name: "Eggs")
-
-    @farm = Farm.create(name:                  "Pro Egg Farm",
-                     email:                 "1@1.com",
-                     password:              '12345678',
-                     password_confirmation: "12345678")
-
-    @eggs = Item.create(name:    'Eggs',
-                     price:    0.20,
-                     quantity: 500,
-                     category: @category,
-                     farm:     @farm)
-
-    @restaurant1 = Restaurant.create(email:                 "1@2.com",
-                                     name:                  "Top Pastries",
-                                     password:              "12345678",
-                                     password_confirmation: "12345678")
-
-    DeliveryOption.create(name: "1st Class", price: 2.99)
-
-    @in_progress_status = Status.create(name: "In Progress")
-
-    @order = Order.new(restaurant: @restaurant1,
-                       delivery_option: DeliveryOption.first,
-                       status: @in_progress_status)
-
-
-
-    @line_item1 = @order.line_items.build(item: @eggs, quantity: 200)
-
+    create_helper_objects
   end
 
   describe "creating orders" do
@@ -96,10 +66,8 @@ describe Order, type: :model do
       @order.status = @dispatched
       @order.save
       previous_count = Order.count
-      puts "before: #{Order.count}"
 
       @order.destroy
-      binding.pry
       expect(Order.count).to eq previous_count
 
     end
