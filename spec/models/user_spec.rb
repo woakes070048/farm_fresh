@@ -20,7 +20,6 @@ describe User do
 
     it "should create a user with email and password" do
       expect(User.count).to eq 0
-      binding.pry
       @valid_user.save
       expect(@valid_user).to be_valid
       expect(User.count).to eq 1
@@ -64,7 +63,7 @@ describe User do
 
     it "should save type field as 'restaurant' \
         when I create a restaurant user" do
-      expect(@restaurant1.type).to eq "restaurant"
+      expect(@restaurant1.type).to eq "Restaurant"
     end
 
   end
@@ -83,9 +82,9 @@ describe User do
       expect(@farm1).to be_valid
     end
 
-    it "should save type field as 'restaurant' \
+    it "should save type field as 'Farm' \
         when I create a restaurant user" do
-      expect(@farm1.type).to eq "farm"
+      expect(@farm1.type).to eq "Farm"
     end
 
   end
