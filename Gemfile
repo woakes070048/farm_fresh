@@ -22,6 +22,7 @@ group :development, :test do
   gem 'pry'
   gem 'jasmine'
   gem 'jasmine-jquery-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -30,7 +31,6 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'simplecov', require: false
