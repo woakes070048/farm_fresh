@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404095602) do
+ActiveRecord::Schema.define(version: 20160404105133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favourite_farms", force: :cascade do |t|
+    t.integer  "restaurant_id"
+    t.integer  "farm_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "favourite_farms", ["farm_id"], name: "index_favourite_farms_on_farm_id", using: :btree
+  add_index "favourite_farms", ["restaurant_id"], name: "index_favourite_farms_on_restaurant_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

@@ -1,4 +1,5 @@
 class Restaurant < User
-  validates_presence_of :name
+  has_many :favourite_farms
 
+  validates_presence_of :name
 end
