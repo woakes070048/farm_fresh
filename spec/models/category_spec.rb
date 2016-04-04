@@ -28,6 +28,26 @@ describe Category, type: :model do
     expect{@meat_category.children}.to_not raise_error
   end
 
+  describe "accessing products from a category" do
+
+    before do
+      # TODO: Create some products and add to meat category
+    end
+
+    it "should be able to find item that belong to it" do
+      pending
+    end
+
+    it "should not be able to add product to a category with sub categories" do
+      pending
+    end
+
+    it "should not be able to add categories to a category with products" do
+      pending
+    end
+
+  end
+
 
 end
 
