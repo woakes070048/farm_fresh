@@ -28,6 +28,14 @@
         1,
         null
       ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/delivery_option.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
       "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/favourite_farm.rb": [
         1,
         1,
@@ -88,6 +96,6 @@
         null
       ]
     },
-    "timestamp": 1459787118
+    "timestamp": 1459789983
   }
 }
