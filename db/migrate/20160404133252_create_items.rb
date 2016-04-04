@@ -4,10 +4,10 @@ class CreateItems < ActiveRecord::Migration
       t.string :name
       t.integer :quantity
       t.decimal :price
-      t.references :farm, index: true, foreign_key: true
+      t.references :farm
       t.references :category, index: true, foreign_key: true
 
-      t.timestamps null: false
+      t.timestamps null: true
     end
   end
 end

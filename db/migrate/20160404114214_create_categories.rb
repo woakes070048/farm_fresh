@@ -5,7 +5,7 @@ class CreateCategories < ActiveRecord::Migration
       t.string :image
       t.references :parent
 
-      t.timestamps null: false
+      t.timestamps null: true
     end
   end
 end

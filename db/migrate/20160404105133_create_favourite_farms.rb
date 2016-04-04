@@ -4,7 +4,7 @@ class CreateFavouriteFarms < ActiveRecord::Migration
       t.references :restaurant, index: true
       t.references :farm, index: true
 
-      t.timestamps null: false
+      t.timestamps null: true
     end
   end
 end

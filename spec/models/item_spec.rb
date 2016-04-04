@@ -2,10 +2,21 @@ require 'rails_helper'
 
 describe Item, type: :model do
   before do
+    Category.destroy_all
+    Farm.destroy_all
+    Item.destroy_all
     @category = Category.create(name: "Eggs")
-    @farm = Farm.new(name: "Pro Egg Farm")
-    @valid_item = Item.new(name: 'Eggs', price: 0.20, quantity: 500
-                           category: @category, farm: @farm)
+
+    @farm = Farm.new(name:                  "Pro Egg Farm",
+                     email:                 "1@1.com",
+                     password:              '12345678',
+                     password_confirmation: "12345678")
+
+    @valid_item = Item.new(name:     'Eggs',
+                           price:    0.20,
+                           quantity: 500,
+                           category: @category,
+                           farm:     @farm)
   end
 
   describe "Adding an item" do
@@ -44,10 +55,17 @@ describe Item, type: :model do
 
   describe "Deleting an item" do
 
+    before do
+      @cheese = Item.create(name:    'Medium Cheddar',
+                            price:    2.79,
+                            quantity: 26,
+                            category: @category,
+                            farm:     @farm)
+    end
+
     it "should not delete" do
-      @valid_item.save
       previous_count = Item.count
-      @valid_item.destroy
+      @cheese.destroy
       expect(Item.count).to eq previous_count
     end
 
@@ -57,29 +75,35 @@ describe Item, type: :model do
 
     before do
       Item.destroy_all
-      @eggs = Item.new(name: 'Eggs', price: 0.20, quantity: 500
-                           category: @category, farm: @farm)
-      @bacon = Item.new(name: 'Bacon', price: 1.25, quantity: 120
-                           category: @category, farm: @farm)
+      @eggs = Item.new(name:    'Eggs',
+                       price:    0.20,
+                       quantity: 500,
+                       category: @category,
+                       farm:     @farm)
+
+      @bacon = Item.new(name:    'Bacon',
+                        price:    1.25,
+                        quantity: 120,
+                        category: @category,
+                        farm:     @farm)
     end
 
 
     it "should not be archived by default" do
       expect(@eggs.archived).to be_nil
       @eggs.save
-      expect(@eggs.archived).to be_false
+      expect(@eggs.archived).to be false
     end
 
     it "should not appear in queries if archived" do
-      # scope?
       @eggs.save
       @bacon.save
       expect(Item.live.count).to eq 2
-      expect(Item.archived.coubt).to eq 0
+      expect(Item.archive.count).to eq 0
 
       @eggs.update(archived: true)
       expect(Item.live.count).to eq 1
-      expect(Item.archived.coubt).to eq 1
+      expect(Item.archive.count).to eq 1
     end
 
   end
