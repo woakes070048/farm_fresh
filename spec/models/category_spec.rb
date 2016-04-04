@@ -31,19 +31,25 @@ describe Category, type: :model do
   describe "accessing products from a category" do
 
     before do
-      # TODO: Create some products and add to meat category
+      @farm = Farm.new(name:            "Pro Egg Farm",
+                 email:                 "1@1.com",
+                 password:              "12345678",
+                 password_confirmation: "12345678")
+
+      @chicken_category = Category.create(name: "Chicken", parent: @meat_category)
+
     end
 
-    it "should be able to find item that belong to it" do
-      pending
+    it "should be able to find items that belong to a category" do
+      expect{@chicken_category.items}.to_not raise_error
     end
 
     it "should not be able to add product to a category with sub categories" do
-      pending
-    end
 
-    it "should not be able to add categories to a category with products" do
-      pending
+      @chicken_category.items.create(name:     'Chicken',
+                                     price:    1.42,
+                                     quantity: 190,
+                                     farm:     @farm)
     end
 
   end
