@@ -14,6 +14,12 @@ Feature: Navigating Categories
   @javascript
   Scenario: Navigating to sub categories
     When I navigate to my home page
-      And I click on the "Poultry" category
-    Then I should see "Chicken" and "Turkey" sub categories
+      And I click on the "Meat" category
+    Then I should see "Chicken" and "Beef" sub categories
 
+  @javascript
+  Scenario: Going back to top level categories
+    When I navigate to my home page
+      And I click on the "Meat" category
+      And I go click on the "Back" button
+    Then I should see a list of top level categories on the left

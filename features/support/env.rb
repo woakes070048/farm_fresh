@@ -5,7 +5,7 @@
 # files.
 
 require 'cucumber/rails'
-# require 'capybara/poltergeist'
+require 'capybara/poltergeist'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -57,3 +57,17 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+Capybara.default_driver = :rack_test
+Capybara.javascript_driver = :selenium
+
+# Around('@poltergeist') do |scenario, block|
+#   @capy_def_driver = Capybara.default_driver
+#   @capy_js_driver = Capybara.javascript_driver
+#   # Just for this scenario, let's go Poltergeist
+#   Capybara.default_driver = :poltergeist
+#   Capybara.javascript_driver = :poltergeist
+#   block.call
+#     # Reset it back to the original
+#   Capybara.default_driver = @capy_def_driver # Usually :rack_test
+#   Capybara.javascript_driver = @capy_js_driver # Usually :selenium
+# end

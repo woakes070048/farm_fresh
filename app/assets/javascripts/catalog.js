@@ -11,10 +11,11 @@ angular.module("Catalog", ["ngResource"])
 
   .controller("CategoriesCtrl", function($scope, Category, Item) {
 
-    $scope.getCategories = function(parent_id) {
+    $scope.getCategories = function(parent_id = null) {
+      parent_id == null ? $scope.atTopLevel = true : $scope.atTopLevel = false;
+
       var categories = Category.query({parent_id: parent_id}, function () {
         $scope.categories = categories;
-        console.log($scope.categories);
       });
     };
 

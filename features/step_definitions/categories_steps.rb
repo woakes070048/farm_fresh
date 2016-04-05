@@ -1,11 +1,8 @@
 Given(/^I am logged in as a restaurant$/) do
-  user = Restaurant.create(name:                  "Top Pastries",
-                           email:                 "top@pas.com",
-                           password:              "12345678",
-                           password_confirmation: "12345678")
+
 
   visit new_restaurant_session_path
-  fill_in "restaurant_email",    with: user.email
+  fill_in "restaurant_email", with: "test@restaurant.com"
   fill_in "restaurant_password", with: "12345678"
   click_button 'Log in'
 end
@@ -32,4 +29,8 @@ end
 Then(/^I should see "([^"]*)" and "([^"]*)" sub categories$/) do |category1, category2|
   expect(page).to have_content category1
   expect(page).to have_content category2
+end
+
+When(/^I go click on the "([^"]*)" button$/) do |button|
+  click_link button
 end
