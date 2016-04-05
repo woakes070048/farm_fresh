@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  # before_filter :check_privileges, only: [:index]
+  before_filter :authenticate_restaurant!
 
   def index
     if params[:parent_id].nil?
