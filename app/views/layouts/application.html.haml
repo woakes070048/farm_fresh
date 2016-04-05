@@ -9,4 +9,17 @@
   %body
     %p.notice= notice
     %p.alert= alert
+
+    %nav
+      -if farm_signed_in?
+        = link_to "Sign Out", destroy_farm_session_path, method: :delete
+      -elsif restaurant_signed_in?
+        = link_to "Sign Out", destroy_restaurant_session_path, method: :delete
+      -else
+        = link_to "Restaurant Sign In", new_restaurant_session_path
+        = link_to "Farm Sign In", new_farm_session_path
+
+
     = yield
+
+    %footer
