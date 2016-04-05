@@ -152,7 +152,7 @@
         null
       ]
     },
-    "timestamp": 1459843439
+    "timestamp": 1459845997
   },
   "rails_app_": {
     "coverage": {
@@ -308,5 +308,160 @@
       ]
     },
     "timestamp": 1459844003
+  },
+  "Cucumber Features": {
+    "coverage": {
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/category.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/delivery_option.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/farm.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/favourite_farm.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/item.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/item_image.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/line_item.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/order.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/restaurant.rb": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/status.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/user.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1459846462
   }
 }
