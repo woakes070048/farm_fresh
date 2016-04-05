@@ -4,5 +4,7 @@ class Category < ActiveRecord::Base
 
   has_many :items
 
+  scope :top_level, -> { where parent: nil }
+
   validates_presence_of :name
 end
