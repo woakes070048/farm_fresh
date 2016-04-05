@@ -315,6 +315,15 @@
         1,
         null
       ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/controllers/restaurants_controller.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
       "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/category.rb": [
         0,
         0,
@@ -462,6 +471,6 @@
         0
       ]
     },
-    "timestamp": 1459846462
+    "timestamp": 1459850776
   }
 }

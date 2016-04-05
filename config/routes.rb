@@ -1,17 +1,21 @@
 Rails.application.routes.draw do
 
-  devise_for :farms
-  devise_for :restaurants
+  devise_for :farms#, :controllers => { registrations: 'farm_registrations' }
+  devise_for :restaurants#, :controllers => { registrations: 'restaurant_registrations' }
+
 
   authenticated :farm do
     root "farms#index", as: :farm_root
+    get "/" => "farms#index"
   end
 
   authenticated :restaurant do
-    root "restaurant#index", as: :restaurant_root
+    root "restaurants#index", as: :restaurant_root
+    get "/" => "restaurants#index"
   end
 
   root "application#index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

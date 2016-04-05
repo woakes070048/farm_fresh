@@ -8,13 +8,15 @@ When(/^I navigate to the Restaurant signup page$/) do
 end
 
 When(/^I fill in the "([^"]*)" form correctly$/) do |user_type|
+  fill_in "#{user_type}_name", with: "Test Store"
   fill_in "#{user_type}_email", with: "test@#{user_type}.com"
   fill_in "#{user_type}_password", with: "12345678"
   fill_in "#{user_type}_password_confirmation", with: "12345678"
+  click_button 'Sign up'
 end
 
 Then(/^I should be taken to the restaurants home page$/) do
-  expect(current_path).to eq "/"
+  expect(current_path).to eq restaurant_root_path
   expect(page).to have_content "Sign Out"
   expect(page).to have_content "Restaurant Home Page"
 end

@@ -28,6 +28,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem "erb2haml"
 end
 
 group :test do
