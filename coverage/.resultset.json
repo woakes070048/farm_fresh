@@ -1,6 +1,14 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/farm.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        null
+      ],
       "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/user.rb": [
         1,
         null,
@@ -12,6 +20,13 @@
         1,
         null,
         null,
+        null
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/restaurant.rb": [
+        1,
+        1,
+        null,
+        1,
         null
       ],
       "/Users/work/Documents/WeGotCoders/farm_fresh/app/helpers/application_helper.rb": [
@@ -136,23 +151,26 @@
         1,
         null
       ],
-      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/restaurant.rb": [
-        1,
-        1,
-        null,
-        1,
-        null
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/controllers/farms_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/farm.rb": [
-        1,
-        1,
-        null,
-        1,
-        null,
-        null
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/controllers/restaurants_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
       ]
     },
-    "timestamp": 1459845997
+    "timestamp": 1459853208
   },
   "rails_app_": {
     "coverage": {
@@ -480,6 +498,6 @@
         0
       ]
     },
-    "timestamp": 1459853139
+    "timestamp": 1459853218
   }
 }
