@@ -14,6 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml-rails'
 gem 'figaro'
 gem 'devise'
+gem 'angularjs-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
