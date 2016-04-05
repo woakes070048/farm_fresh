@@ -14,11 +14,11 @@ angular.module("Catalog", ["ngResource"])
     $scope.getCategories = function(parent_id) {
       var categories = Category.query({parent_id: parent_id}, function () {
         $scope.categories = categories;
-        console.log(categories)
+        console.log($scope.categories);
       });
     };
 
-    $scope.getCategories();
+    $scope.getCategories(); // load top level categories first
   })
 
   .controller("ItemsCtrl", function($scope) {
