@@ -33,6 +33,24 @@
         1,
         null
       ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/controllers/farms_controller.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/controllers/restaurants_controller.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
       "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/category.rb": [
         1,
         1,
@@ -166,27 +184,9 @@
         0,
         0,
         0
-      ],
-      "/Users/work/Documents/WeGotCoders/farm_fresh/app/controllers/farms_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/work/Documents/WeGotCoders/farm_fresh/app/controllers/restaurants_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
       ]
     },
-    "timestamp": 1459881715
+    "timestamp": 1459882478
   },
   "rails_app_": {
     "coverage": {
