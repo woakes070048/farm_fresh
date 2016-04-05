@@ -9,7 +9,7 @@ Feature: Navigating Categories
   @javascript
   Scenario: Viewing top level categories
     When I navigate to my home page
-    Then I should see a list of categories on the left
+    Then I should see a list of top level categories on the left
 
   @javascript
   Scenario: Navigating to sub categories
