@@ -1,10 +1,25 @@
 %h1 Restaurant Home Page
 
-%aside
-  %h4 Browse Products
-  %div{id: "menuContainer", "ng-app": "Catalog", "ng-controller": "CategoriesCtrl"}
+%div{id: "productsContainer", "ng-app": "Catalog", "ng-controller": "CategoriesCtrl"}
+
+  %aside
+    %h4 Browse Products
 
     = link_to "Back", "#", id: "backLink", "ng-click": "getCategories()", "ng-show": "!atTopLevel"
+
     %ul
       %li{"ng-repeat": "category in categories"}
-        = link_to "{{category.name}}", "#", class: "categoryLink", "ng-click": "getCategories(category.id)"
+        = link_to "{{category.name}}", "#", class: "categoryLink", "ng-click": "getCategories(category.id, category)"
+
+  %section{"ng-controller": "ItemsCtrl"}
+    %h2 Products
+
+    .itemsContainer
+      %div{class: "item", "ng-repeat": "item in items"}
+        .itemName "{{item.name}}"
+        .itemDescription "{{item.description}}"
+        .itemPrice "{{item.price}}"
+        .itemQty "{{item.quantity}}"
+
+
+

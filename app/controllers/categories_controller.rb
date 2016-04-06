@@ -3,10 +3,10 @@ class CategoriesController < ApplicationController
 
   def index
     if params[:parent_id].nil?
-      @categories = Category.top_level
+      @categories = Category.top_level.includes(:items)
     else
       category = Category.find(params[:parent_id])
-      @categories = category.children
+      @categories = category.children.includes(:items)
     end
   end
 

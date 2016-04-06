@@ -1,25 +1,29 @@
 
 angular.module("Catalog", ["ngResource"])
 
-  .factory("Category", function($resource) {
+  .factory("Category", ["$resource", function($resource) {
     return $resource("/categories.json/:id");
-  })
+  }])
 
-  .factory("Item", function($resource) {
+  .factory("Item", ["$resource", function($resource) {
     return $resource("/items.json/:id");
-  })
+  }])
 
-  .controller("CategoriesCtrl", ["$rootScope", "$scope", "Category",function($rootScope, $scope, Category) {
+  .controller("CategoriesCtrl", ["$scope", "Category", "Item", function($scope, Category, Item) {
 
-    $scope.getCategories = function(parent_id = null) {
+    $scope.getCategories = function(parent_id = null, parent) {
+      if (parent != null)
+        $scope.items = parent.items;
 
+      // debugger;
       if (parent_id == null) {
         $scope.atTopLevel = true
+        $scope.currentCategory = null;
       }
       else {
         $scope.atTopLevel = false;
-        $rootScope.currentCategory = parent_id;
-        console.log($rootScope.currentCategory);
+        $scope.currentCategory = parent_id;
+        // $scope.items = parent_id.items;
       }
 
       var categories = Category.query({parent_id: parent_id}, function () {
@@ -28,8 +32,15 @@ angular.module("Catalog", ["ngResource"])
     };
 
     $scope.getCategories(); // load top level categories first
+
+    $scope.setItems = function(category) {
+      $scope.items = category.items;
+    }
+
   }])
 
-  .controller("ItemsCtrl", function($rootScope, $scope, Item) {
-
-  });
+  .controller("ItemsCtrl", ["$scope", "Item", function($scope, Item) {
+      // $scope.$on("currentCategory_changed", function(event, data) {
+      //   console.log(data);
+      // });
+  }]);

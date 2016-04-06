@@ -1,18 +1,12 @@
 Given(/^I am logged in as a restaurant$/) do
- restaurant = Restaurant.create(name: "Edgemoor Inn Ltd", street: "Gloucester Road",
-                   city: "Stroud", post_code: "GL6 6ND", region: "Gloucestershire",
-                   logo: "http://www.yell.comhttp://cdn.yell.com/cdn/yellapi/asset/47F5F723144887C3/thumbnail",
-                   email: "rest@1.com", password: "12345678", password_confirmation: "12345678")
-  Category.create(name: "Bakery")
-  m = Category.create(name: "Meat")
-  Category.create(name: "Chicken", parent: m)
-  Category.create(name: "Beef", parent: m)
-
+  load_users
+  load_categories
 
   visit new_restaurant_session_path
   fill_in "restaurant_email", with: "rest@1.com"
   fill_in "restaurant_password", with: "12345678"
   click_button 'Log in'
+  expect(page).to have_content "Sign Out"
 end
 
 When(/^I navigate to my home page$/) do
