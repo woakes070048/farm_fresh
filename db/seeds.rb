@@ -10,7 +10,7 @@
 FavouriteFarm.destroy_all
 ItemImage.destroy_all
 LineItem.destroy_all
-# CartItem.destroy_all
+CartItem.destroy_all
 Item.destroy_all
 Category.destroy_all
 Order.destroy_all

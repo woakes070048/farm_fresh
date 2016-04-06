@@ -63,8 +63,6 @@ ActiveRecord::Schema.define(version: 20160406090117) do
     t.text     "description"
   end
 
-  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
-
   create_table "line_items", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "item_id"
@@ -121,7 +119,6 @@ ActiveRecord::Schema.define(version: 20160406090117) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "item_images", "items"
-  add_foreign_key "items", "categories"
   add_foreign_key "line_items", "items"
   add_foreign_key "line_items", "orders"
   add_foreign_key "orders", "delivery_options"

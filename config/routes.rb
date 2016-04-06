@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   authenticated :farm do
     root "farms#index", as: :farm_root
     get "/" => "farms#index"
+    resources :items, only: [:index, :show, :update, :destroy]
   end
 
   authenticated :restaurant do
     root "restaurants#index", as: :restaurant_root
     get "/" => "restaurants#index"
+    resources :items, only: [:index, :show]
   end
 
   root "application#index"

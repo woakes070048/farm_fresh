@@ -3,9 +3,9 @@ class ItemsController < ApplicationController
 
   def index
     if params[:category_id].nil?
-      @items = Item.all
+      @items = Item.all.includes(:images)
     else
-      @items = Category.find(params[:category_id]).items
+      @items = Category.find(params[:category_id]).items.includes(:images)
     end
 
     unless params[:sort_option].nil?
