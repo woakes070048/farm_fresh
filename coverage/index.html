@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-05T17:17:45+01:00">2016-04-05T17:17:45+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-06T12:52:32+01:00">2016-04-06T12:52:32+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>15</b> files in total.
-    <b>153</b> relevant lines. 
+    <b>154</b> relevant lines. 
     <span class="green"><b>1</b> lines covered</span> and
-    <span class="red"><b>152</b> lines missed </span>
+    <span class="red"><b>153</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -53,10 +53,10 @@
       <tr>
         <td class="strong"><a href="#46bdc788fa467cbf725d4d3d00767603ad4a0136" class="src_link" title="app/controllers/categories_controller.rb">app/controllers/categories_controller.rb</a></td>
         <td class="red strong">0.0 %</td>
-        <td>12</td>
-        <td>12</td>
+        <td>13</td>
+        <td>13</td>
         <td>0</td>
-        <td>12</td>
+        <td>13</td>
         <td>0.0</td>
       </tr>
       
@@ -220,9 +220,9 @@
   <a name="Controllers"></a>
   <div>
     <b>3</b> files in total.
-    <b>26</b> relevant lines. 
+    <b>27</b> relevant lines. 
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>26</b> lines missed </span>
+    <span class="red"><b>27</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -241,10 +241,10 @@
       <tr>
         <td class="strong"><a href="#46bdc788fa467cbf725d4d3d00767603ad4a0136" class="src_link" title="app/controllers/categories_controller.rb">app/controllers/categories_controller.rb</a></td>
         <td class="red strong">0.0 %</td>
-        <td>12</td>
-        <td>12</td>
+        <td>13</td>
+        <td>13</td>
         <td>0</td>
-        <td>12</td>
+        <td>13</td>
         <td>0.0</td>
       </tr>
       
@@ -593,9 +593,9 @@
     <h3>app/controllers/categories_controller.rb</h3>
     <h4><span class="red">0.0 %</span> covered</h4>
     <div>
-      <b>12</b> relevant lines. 
+      <b>13</b> relevant lines. 
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>12</b> lines missed.</span>
+      <span class="red"><b>13</b> lines missed.</span>
     </div>
   </div>
   
@@ -611,64 +611,70 @@
         <li class="missed" data-hits="0" data-linenumber="2">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  before_filter :authenticate_restaurant!</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="3">
           
           
-          <code class="ruby">  def index</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="4">
           
           
-          <code class="ruby">    if params[:parent_id].nil?</code>
+          <code class="ruby">  def index</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="5">
           
           
-          <code class="ruby">      @categories = Category.top_level</code>
+          <code class="ruby">    if params[:parent_id].nil?</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="6">
           
           
-          <code class="ruby">    else</code>
+          <code class="ruby">      @categories = Category.top_level</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="7">
           
           
-          <code class="ruby">      category = Category.find(params[:parent_id])</code>
+          <code class="ruby">    else</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="8">
           
           
-          <code class="ruby">      @categories = category.children</code>
+          <code class="ruby">      category = Category.find(params[:parent_id])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="9">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">      @categories = category.children</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="10">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="11">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="12">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="13">
           
           
           <code class="ruby">end</code>
