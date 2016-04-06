@@ -7,7 +7,7 @@ class Item < ActiveRecord::Base
   validates :price, numericality: { greater_than: 0}
 
   before_create :default_values
-  before_destroy :archive_item
+  before_destroy :archive_item, :delete_images
 
   scope :live,    -> { where archived: false }
   scope :archive, -> { where archived: true }
@@ -22,5 +22,9 @@ class Item < ActiveRecord::Base
   def archive_item
     write_attribute(:archived, true)
     false
+  end
+
+  def delete_images
+    images.destroy
   end
 end

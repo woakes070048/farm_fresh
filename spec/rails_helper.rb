@@ -24,9 +24,9 @@ def create_helper_objects
   @child_category = Category.create(name: "Chicken Eggs", parent: @category)
 
   @farm = Farm.create(name:                  "Pro Egg Farm",
-                   email:                 "1@1.com",
-                   password:              '12345678',
-                   password_confirmation: "12345678")
+                      email:                 "1@1.com",
+                      password:              '12345678',
+                      password_confirmation: "12345678")
 
   @eggs = Item.create(name: 'Eggs', price: 0.20, quantity: 500, category: @category, farm: @farm)
   Item.create(name: 'Eggs1', price: 0.20, quantity: 500, category: @category, farm: @farm)

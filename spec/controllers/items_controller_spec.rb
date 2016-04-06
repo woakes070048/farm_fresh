@@ -15,16 +15,29 @@ describe ItemsController, type: :controller do
     get :index, {format: JSON}
     expect(response.header['Content-Type']).to start_with 'application/json'
     expect(JSON.parse(response.body).map { |i| i["name"] }).to include "Eggs"
+
   end
 
-  it "should get a page of items if a sort option is provided" do
+  it "should get a page of items and in order of quantity if a sort option is provided" do
     sign_in @restaurant1
-    get :index, {format: JSON}
+    get :index, {format: JSON, sort_option: "Quantity"}
     data = JSON.parse(response.body)
+    expect(data.first["quantity"]).to be >= data.last["quantity"]
     expect(data.count).to be <= 10
   end
 
-  it "should retrun a specific item" do
+  it "should return items from a specific category" do
+    sign_in @restaurant1
+    get :index, {format: JSON, category_id: @category.id}
+    data = JSON.parse(response.body)
+    expect(data.count).to be <= 10
+
+    data.each do |item|
+      expect(item["category_id"]).to eq @category.id
+    end
+  end
+
+  it "should return a specific item" do
     sign_in @restaurant1
     id = Item.first.id
     get :show, {id: id}
@@ -35,23 +48,31 @@ describe ItemsController, type: :controller do
     expect(item["quantity"]).to eq 500
   end
 
-  it "should allow a farm to create an item" do
+  it "should allow a farm to create an item with valid data" do
     sign_in @farm
     get :show, {id: Item.first.id}
     item_data = JSON.parse(response.body)
     item_data["id"] = nil
+    item_data["farm_id"] = Farm.first
     previous_count = Item.count
     item = { item: item_data}
 
     post :create, item
     expect(Item.count).to eq previous_count + 1
-  end
 
-  it "should allow a farm to delete an item" do
     previous_count = Item.count
-    delete :destroy, {format: JSON}, {id: Item.last.id}
-    expect(Item.count).to eq previous_count - 1
+    item_data["farm_id"] = nil
+    item_data["category_id"] = nil
+    post :create, item
+    expect(Item.count).to eq previous_count
   end
 
+
+  it "should allow a farm to archive an item" do
+    sign_in @farm
+    previous_live_count = Item.live.count
+    delete :destroy, {id: Item.last.id}
+    expect(Item.live.count).to eq(previous_live_count - 1)
+  end
 
 end
