@@ -7,18 +7,17 @@ Rails.application.routes.draw do
   authenticated :farm do
     root "farms#index", as: :farm_root
     get "/" => "farms#index"
-    resources :items, only: [:index, :show, :update, :destroy]
   end
 
   authenticated :restaurant do
     root "restaurants#index", as: :restaurant_root
     get "/" => "restaurants#index"
-    resources :items, only: [:index, :show]
   end
 
   root "application#index"
 
   resources :categories, only: [:index]
+  resources :items, only: [:index, :create, :show, :update, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

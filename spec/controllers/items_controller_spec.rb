@@ -5,6 +5,9 @@ describe ItemsController, type: :controller do
 
   before do
     create_helper_objects
+    # @request.env["devise.mapping"] = Devise.mappings[:user]
+    allow(controller).to receive(:authenticate_farm!).and_return(true)
+    allow(controller).to receive(:current_farm).and_return(@farm)
   end
 
   it "should get a page of items" do
@@ -24,24 +27,23 @@ describe ItemsController, type: :controller do
   it "should retrun a specific item" do
     sign_in @restaurant1
     id = Item.first.id
-    get :show, {format: JSON}, {id: id}
+    get :show, {id: id}
+
     item = JSON.parse(response.body)
-    expect(item.name).to eq "Eggs"
-    expect(item.price).to eq 0.20
-    expect(item.quantity).to eq 500
+    expect(item["name"]).to eq "Eggs"
+    expect(item["price"].to_f).to eq 0.20
+    expect(item["quantity"]).to eq 500
   end
 
   it "should allow a farm to create an item" do
-    sign_in @restaurant1
-    get :show, {format: JSON}, {id: Item.first.id}
-    item = JSON.parse(response.body)
-
+    sign_in @farm
+    get :show, {id: Item.first.id}
+    item_data = JSON.parse(response.body)
+    item_data["id"] = nil
     previous_count = Item.count
+    item = { item: item_data}
 
-    headers = { 'CONTENT_TYPE' => 'application/json' }
-    json = item.to_json
-    post :create, json, headers
-
+    post :create, item
     expect(Item.count).to eq previous_count + 1
   end
 
