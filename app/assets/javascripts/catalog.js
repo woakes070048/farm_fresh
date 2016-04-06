@@ -41,9 +41,6 @@ angular.module("Catalog", ["ngResource"])
     $scope.setSortOption = function() {
       // TODO: Sort by items
     }
-    $scope.getSortedItems = function(sortItem) {
-      console.log(sortItem);
-    }
 
   }])
 
