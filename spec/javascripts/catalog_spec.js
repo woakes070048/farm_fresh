@@ -69,3 +69,4 @@ describe('Catalog Module', function () {
   //   });
   // });
 });
+

@@ -1,5 +1,6 @@
 
 When(/^I click on the 'Chicken' category$/) do
+<<<<<<< HEAD
   click_link "Meat"
   click_link "Chicken"
 end

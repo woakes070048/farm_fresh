@@ -88,4 +88,3 @@ farm.items.create(name: "Apple Cider", quantity: 34, price: 1.39, category: e,
                   description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
 farm.items.create(name: "Steak", quantity: 22, price: 4.88, category: a,
                   description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
-
