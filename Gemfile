@@ -15,6 +15,7 @@ gem 'haml-rails'
 gem 'figaro'
 gem 'devise'
 gem 'angularjs-rails'
+gem 'will_paginate'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
