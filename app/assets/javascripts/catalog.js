@@ -9,10 +9,18 @@ angular.module("Catalog", ["ngResource"])
     return $resource("/items.json/:id");
   })
 
-  .controller("CategoriesCtrl", function($scope, Category, Item) {
+  .controller("CategoriesCtrl", ["$rootScope", "$scope", "Category",function($rootScope, $scope, Category) {
 
     $scope.getCategories = function(parent_id = null) {
-      parent_id == null ? $scope.atTopLevel = true : $scope.atTopLevel = false;
+
+      if (parent_id == null) {
+        $scope.atTopLevel = true
+      }
+      else {
+        $scope.atTopLevel = false;
+        $rootScope.currentCategory = parent_id;
+        console.log($rootScope.currentCategory);
+      }
 
       var categories = Category.query({parent_id: parent_id}, function () {
         $scope.categories = categories;
@@ -20,8 +28,8 @@ angular.module("Catalog", ["ngResource"])
     };
 
     $scope.getCategories(); // load top level categories first
-  })
+  }])
 
-  .controller("ItemsCtrl", function($scope) {
+  .controller("ItemsCtrl", function($rootScope, $scope, Item) {
 
   });
