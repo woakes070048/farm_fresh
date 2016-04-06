@@ -1,5 +1,51 @@
 require 'rails_helper'
 
-RSpec.describe ItemsController, type: :controller do
+describe ItemsController, type: :controller do
+
+  before (:all) do
+    create_helper_objects
+    sign_in @restaurant1
+  end
+
+  it "should get a page of items" do
+    get :index, {format: json}
+    expect(response.header['Content-Type']).to start_with 'application/json'
+    expect(JSON.parse(response.body).map { |i| i["name"] }).to include "Eggs"
+  end
+
+  it "should get a page of items if a sort option is provided" do
+    get :index, {format: json}
+    data = JSON.parse(response.body)
+    exepct(data.count).to be <= 10
+  end
+
+  it "should retrun a specific item" do
+    id = Item.first.id
+    get :show, {format: json}, {id: id}
+    item = JSON.parse(response.body)
+    expect(item.name).to eq "Eggs"
+    expect(item.price).to eq 0.20
+    expect(item.quantity).to eq 500
+  end
+
+  it "should allow a farm to create an item" do
+    get :show, {format: json}, {id: Item.first.id}
+    item = JSON.parse(response.body)
+
+    previous_count = Item.count
+
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+    json = item.to_json
+    post :create, json, headers
+
+    expect(Item.count).to eq previous_count + 1
+  end
+
+  it "should allow a farm to delete an item" do
+    previous_count = Item.count
+    delete :destroy, {format: json}, {id: Item.last.id}
+    expect(Item.count).to eq previous_count - 1
+  end
+
 
 end

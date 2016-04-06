@@ -4,11 +4,12 @@ describe CategoriesController, type: :controller do
   render_views
 
   before do
-    Restaurant.destroy_all
-    @user = Restaurant.create(name:                  "Top Pastries",
-                              email:                 "top@1.com",
-                              password:              "12345678",
-                              password_confirmation: "12345678")
+    # Restaurant.destroy_all
+    # @user = Restaurant.create(name:                  "Top Pastries",
+    #                           email:                 "top@1.com",
+    #                           password:              "12345678",
+    #                           password_confirmation: "12345678")
+    create_helper_objects
   end
 
   it "should only allow restaurant users to access it" do

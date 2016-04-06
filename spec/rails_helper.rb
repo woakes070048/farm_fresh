@@ -27,11 +27,20 @@ def create_helper_objects
                    password:              '12345678',
                    password_confirmation: "12345678")
 
-  @eggs = Item.create(name:    'Eggs',
-                   price:    0.20,
-                   quantity: 500,
-                   category: @category,
-                   farm:     @farm)
+  @eggs = Item.create(name: 'Eggs', price: 0.20, quantity: 500, category: @category, farm: @farm)
+  Item.create(name: 'Eggs1', price: 0.20, quantity: 500, category: @category, farm: @farm)
+  Item.create(name: 'Eggs2', price: 0.20, quantity: 500, category: @category, farm: @farm)
+  Item.create(name: 'Eggs3', price: 0.20, quantity: 500, category: @category, farm: @farm)
+  Item.create(name: 'Eggs4', price: 0.20, quantity: 500, category: @category, farm: @farm)
+  Item.create(name: 'Eggs5', price: 0.20, quantity: 500, category: @category, farm: @farm)
+  Item.create(name: 'Eggs6', price: 0.20, quantity: 500, category: @category, farm: @farm)
+  Item.create(name: 'Eggs7', price: 0.20, quantity: 500, category: @category, farm: @farm)
+  Item.create(name: 'Eggs8', price: 0.20, quantity: 500, category: @category, farm: @farm)
+  Item.create(name: 'Eggs9', price: 0.20, quantity: 500, category: @category, farm: @farm)
+  Item.create(name: 'Eggs10', price: 0.20, quantity: 500, category: @category, farm: @farm)
+  Item.create(name: 'Eggs11', price: 0.20, quantity: 500, category: @category, farm: @farm)
+  Item.create(name: 'Eggs12', price: 0.20, quantity: 500, category: @category, farm: @farm)
+  Item.create(name: 'Eggs13', price: 0.20, quantity: 500, category: @category, farm: @farm)
 
   @restaurant1 = Restaurant.create(email:                 "1@2.com",
                                    name:                  "Top Pastries",
