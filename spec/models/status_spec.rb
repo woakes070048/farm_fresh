@@ -6,7 +6,7 @@ describe Status, type: :model do
     status = Status.new
     expect(status).to_not be_valid
 
-    status.name = "In Progress"
+    status.name = "Cancelled"
     expect(status).to be_valid
   end
 
@@ -26,9 +26,10 @@ describe Status, type: :model do
     end
 
     it "should get a list of orders for a status" do
+      previous_order_count = @in_progress_status.orders.count
       @order.status = @in_progress_status
       @order.save
-      expect(@in_progress_status.orders.count).to eq 1
+      expect(@in_progress_status.orders.count).to eq previous_order_count + 1
     end
 
   end

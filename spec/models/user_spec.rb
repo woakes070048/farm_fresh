@@ -19,22 +19,21 @@ describe User do
     end
 
     it "should create a user with email and password" do
-      expect(User.count).to eq 0
+      previous_count = User.count
       @valid_user.save
       expect(@valid_user).to be_valid
-      expect(User.count).to eq 1
+      expect(User.count).to eq previous_count + 1
     end
 
     it "should not save users with password less than 8 characters" do
-      expect(User.count).to eq 0
+      previous_count = User.count
       @invalid_user1.save
       expect(@invalid_user1).to_not be_valid
-      expect(User.count).to eq 0
+      expect(User.count).to eq previous_count
     end
 
     it "should not save users where password and password\
        confirmation do not match" do
-      expect(User.count).to eq 0
       @invalid_user2.save
       expect(@invalid_user2).to_not be_valid
     end

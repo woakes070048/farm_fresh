@@ -21,6 +21,7 @@ end
 def create_helper_objects
 
   @category = Category.create(name: "Eggs")
+  @child_category = Category.create(name: "Chicken Eggs", parent: @category)
 
   @farm = Farm.create(name:                  "Pro Egg Farm",
                    email:                 "1@1.com",
@@ -49,6 +50,7 @@ def create_helper_objects
 
   DeliveryOption.create(name: "1st Class", price: 2.99)
 
+  Status.destroy_all
   @in_progress_status = Status.create(name: "In Progress")
 
   @order = Order.new(restaurant: @restaurant1,

@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe Item, type: :model do
   before do
-    Category.destroy_all
-    Farm.destroy_all
-    Item.destroy_all
+    # Category.destroy_all
+    # Farm.destroy_all
+    # Item.destroy_all
     @category = Category.create(name: "Eggs")
 
     @farm = Farm.new(name:                  "Pro Egg Farm",
@@ -96,14 +96,19 @@ describe Item, type: :model do
     end
 
     it "should not appear in queries if archived" do
+      previous_live_count = Item.live.count
+      previous_archived_count = Item.archive.count
       @eggs.save
       @bacon.save
-      expect(Item.live.count).to eq 2
-      expect(Item.archive.count).to eq 0
+      expect(Item.live.count).to eq previous_live_count + 2
+      expect(Item.archive.count).to eq previous_archived_count
 
+
+      previous_live_count = Item.live.count
+      previous_archived_count = Item.archive.count
       @eggs.update(archived: true)
-      expect(Item.live.count).to eq 1
-      expect(Item.archive.count).to eq 1
+      expect(Item.live.count).to eq previous_live_count - 1
+      expect(Item.archive.count).to eq previous_archived_count + 1
     end
 
   end

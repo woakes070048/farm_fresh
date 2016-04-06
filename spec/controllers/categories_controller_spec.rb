@@ -5,10 +5,10 @@ describe CategoriesController, type: :controller do
 
   before do
     # Restaurant.destroy_all
-    # @user = Restaurant.create(name:                  "Top Pastries",
-    #                           email:                 "top@1.com",
-    #                           password:              "12345678",
-    #                           password_confirmation: "12345678")
+    @user = Restaurant.create(name:                  "Top Pastries",
+                              email:                 "top@1.com",
+                              password:              "12345678",
+                              password_confirmation: "12345678")
     create_helper_objects
   end
 
@@ -25,14 +25,14 @@ describe CategoriesController, type: :controller do
     sign_in @user
     get :index, {format: 'json'}
     expect(response.header['Content-Type']).to start_with 'application/json'
-    expect(JSON.parse(response.body).map { |i| i["name"] }).to include "Bakery"
+    expect(JSON.parse(response.body).map { |i| i["name"] }).to include "Eggs"
   end
 
   it "should return child categories when parent_id present" do
     sign_in @user
-    get :index, {format: 'json', parent_id: Category.top_level.first.id}
+    get :index, {format: 'json', parent_id: @child_category.parent.id}
     expect(response.header['Content-Type']).to start_with 'application/json'
-    expect(JSON.parse(response.body).map { |i| i["name"] }).to include "Bread"
+    expect(JSON.parse(response.body).map { |i| i["name"] }).to include "Chicken Eggs"
   end
 
 end
