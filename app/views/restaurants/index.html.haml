@@ -11,8 +11,14 @@
       %li{"ng-repeat": "category in categories"}
         = link_to "{{category.name}}", "#", class: "categoryLink", "ng-click": "getCategories(category.id, category)"
 
-  %section{"ng-controller": "ItemsCtrl"}
+  %section
     %h2 Products
+
+    #selectionForm
+      = label_tag "Sort By: "
+      %select{id: "sortSelection", "ng-model": "selectedSort", "ng-options": "sortItem for sortItem in sortList", "ng-change": "setSortOption()"}
+      /   %option{"ng-repeat": "sortItem in sortList", id: "sortList", "ng-change": "getSortedItems(sortItem)" } {{sortItem}}
+      / / %button{"ng-click": "getSortedItems()"} Sort
 
     .itemsContainer
       %div{class: "item", "ng-repeat": "item in items"}

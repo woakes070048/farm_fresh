@@ -12,10 +12,11 @@ Feature: Browsing Products
     When I click on the 'Chicken' category
     Then I should see a list of all the products in that category
 
-  # Scenario: Sorting products by quantity
-  #   When I click on the 'Chicken' category
-  #    And I click on a quantity sort button
-  #   Then I should see the products with the most quantity on top
+  @javascript
+  Scenario: Sorting products by quantity
+    When I click on the 'Chicken' category
+     And I click on a quantity sort button
+    Then I should see the products with the most quantity on top
 
   # Scenario: Sorting products by price
   #   When I click on the 'Chicken' category

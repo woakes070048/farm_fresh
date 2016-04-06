@@ -5,9 +5,12 @@ When(/^I click on the 'Chicken' category$/) do
 end
 
 Then(/^I should see a list of all the products in that category$/) do
-  expect(page).to have_css(".itemContainer")
+  expect(page).to have_css(".itemsContainer")
   expect(page).to have_css(".item")
-  expect(page.first(".item")).to have_content "£"
+  expect(page.first(".item")).to have_css(".itemName")
+  expect(page.first(".item")).to have_css(".itemDescription")
+  expect(page.first(".item")).to have_css(".itemPrice")
+  expect(page.first(".item")).to have_css(".itemQty")
 end
 
 When(/^I click on a quantity sort button$/) do
@@ -19,7 +22,7 @@ end
 Then(/^I should see the products with the most quantity on top$/) do
   first_qty = page.first(".item").find_css(".qty").gsub("£", "")
   last_qty = page.last(".item").find_css(".qty").gsub("£", "")
-  expect(first_qty).to > last_qty
+  expect(first_qty.to_i).to > last_qty.to_i
 end
 
 When(/^I click on a price sort button$/) do

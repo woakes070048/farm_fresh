@@ -10,6 +10,7 @@ angular.module("Catalog", ["ngResource"])
   }])
 
   .controller("CategoriesCtrl", ["$scope", "Category", "Item", function($scope, Category, Item) {
+    $scope.sortList = ["Price", "Quantity", "Distance"];
 
     $scope.getCategories = function(parent_id = null, parent) {
       if (parent != null)
@@ -37,10 +38,15 @@ angular.module("Catalog", ["ngResource"])
       $scope.items = category.items;
     }
 
+    $scope.setSortOption = function() {
+      // TODO: Sort by items
+    }
+    $scope.getSortedItems = function(sortItem) {
+      console.log(sortItem);
+    }
+
   }])
 
   .controller("ItemsCtrl", ["$scope", "Item", function($scope, Item) {
-      // $scope.$on("currentCategory_changed", function(event, data) {
-      //   console.log(data);
-      // });
+
   }]);
