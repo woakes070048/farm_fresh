@@ -1,7 +1,10 @@
 
 describe('Catalog Module', function () {
+
+  beforeEach(angular.mock.module('Catalog'));
+
+  describe('Catalog Resource', function() {
     var mockCategoryResource, $httpBackend;
-    beforeEach(angular.mock.module('Catalog'));
 
     beforeEach(function () {
         angular.mock.inject(function ($injector) {
@@ -43,4 +46,26 @@ describe('Catalog Module', function () {
       }));
 
     });
+  });
+
+  // describe('CategoriesCtrl', function() {
+  //   var $controller;
+
+  //   beforeEach(inject(function(_$controller_){
+  //     $controller = _$controller_;
+  //     mockCategoryResource = $injector.get('Category');
+  //   }));
+
+  //   describe('$scope.getCategories', function() {
+  //     it('Uses getCategories to get categories', function() {
+  //       var $scope = {};
+  //       var controller = $controller('CategoriesCtrl', { $scope: $scope, Category: Category });
+  //       var result = $scope.getCategories();
+  //       console
+  //       expect(result.length).toBeGreaterThan(1);
+  //       console.log($scope.getCategories());
+  //       // expect($scope.strength).toEqual('strong');
+  //     });
+  //   });
+  // });
 });

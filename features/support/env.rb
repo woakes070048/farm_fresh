@@ -7,6 +7,11 @@
 require 'cucumber/rails'
 require 'capybara/poltergeist'
 
+# Capybara.register_driver :poltergeist do |app|
+#     Capybara::Poltergeist::Driver.new(app, {debug: false})
+# end
+
+
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
@@ -57,8 +62,10 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
-Capybara.default_driver = :rack_test
-Capybara.javascript_driver = :selenium
+# Capybara.default_wait_time = 10
+
+# Capybara.default_driver = :poltergeist
+Capybara.javascript_driver = :poltergeist
 
 # Around('@poltergeist') do |scenario, block|
 #   @capy_def_driver = Capybara.default_driver

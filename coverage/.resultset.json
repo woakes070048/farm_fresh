@@ -39,11 +39,11 @@
         1,
         null,
         1,
-        3,
+        2,
         2,
         null,
-        1,
-        1,
+        0,
+        0,
         null,
         null,
         null,
@@ -188,7 +188,7 @@
         null
       ]
     },
-    "timestamp": 1459893195
+    "timestamp": 1459940656
   },
   "rails_app_": {
     "coverage": {
@@ -347,8 +347,29 @@
   },
   "Cucumber Features": {
     "coverage": {
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/category.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null
+      ],
       "/Users/work/Documents/WeGotCoders/farm_fresh/app/helpers/application_helper.rb": [
         1,
+        null
+      ],
+      "/Users/work/Documents/WeGotCoders/farm_fresh/app/controllers/restaurants_controller.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
         null
       ],
       "/Users/work/Documents/WeGotCoders/farm_fresh/app/controllers/categories_controller.rb": [
@@ -363,30 +384,11 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ],
       "/Users/work/Documents/WeGotCoders/farm_fresh/app/controllers/farms_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/work/Documents/WeGotCoders/farm_fresh/app/controllers/restaurants_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/work/Documents/WeGotCoders/farm_fresh/app/models/category.rb": [
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -532,6 +534,6 @@
         0
       ]
     },
-    "timestamp": 1459873065
+    "timestamp": 1459941584
   }
 }
