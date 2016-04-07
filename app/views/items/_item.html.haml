@@ -1,0 +1,20 @@
+.itemForm
+  = form_for @item do |f|
+    .field
+      = f.label :name
+      = f.text_field :name
+    .field
+      = f.label :price
+      = f.number_field :price, min: 0.10, step: "any"
+    .field
+      = f.label :quantity
+      = f.number_field :quantity, min: 1
+    .field
+      = f.label :category_id
+      = f.select :category_id, @categories
+    .field
+      = f.label :description
+      = f.text_area :description
+    = f.hidden_field :farm_id, value: current_farm.id
+    .field
+      = f.submit

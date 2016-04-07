@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_filter :authenticate_farm!, only: [:farm_index, :show, :create, :destroy]
+  before_filter :authenticate_farm!, only: [:farm_index, :show, :create, :destroy, :new, :edit]
   before_filter :authenticate_restaurant!, only: [:index, :show, :product]
 
   def index
@@ -26,34 +26,65 @@ class ItemsController < ApplicationController
   end
 
   def farm_index
-    @items = current_farm.items.paginate(page: params[:page]).includes(:images)
+    @items = current_farm.items.live.paginate(page: params[:page]).includes(:images)
   end
 
   def create
     @item = Item.create(item_params)
 
     if @item.valid?
-      render json: @item
+      redirect_to :farm_index, notice: "Item created"
     else
-      render json: {error: "Could not save the item."}
+      redirect_to :farm_index, notice: "Could not create item"
     end
+
   end
 
   def destroy
-    # needed to add this as a workaround for Items that got added without farms
-    Item.all.each { |i| i.update(farm: Farm.first) }
+    # # needed to add this as a workaround for Items that got added without farms
+    # Item.all.each { |i| i.update(farm: Farm.first) }
 
     @item = Item.find(params[:id])
     @item.update(archived: true)
-    render json: @item
+    redirect_to farm_items_path, notice: "Item removed"
+  end
+
+  def new
+    @item = Item.new
+    @categories = Category.all.where("parent_id IS NOT null").map do |category|
+      [category.name, category.id]
+    end
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+    @categories = get_categories_list
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+
+    if @item.valid?
+      redirect_to farm_items_path, notice: "Item updated successfully"
+    else
+      redirect_to farm_items_path, notice: "Could not update item"
+    end
   end
 
   def product
     @item = Item.find(params[:id])
+    @categories = get_categories_list
   end
 
   def item_params
     params.require(:item).permit(:name, :quantity, :price, :farm_id, :category_id, :description,
       images_attributes: [:image, :_destroy])
+  end
+
+  def get_categories_list
+    Category.all.where("parent_id IS NOT null").map do |category|
+          [category.name, category.id]
+    end
   end
 end

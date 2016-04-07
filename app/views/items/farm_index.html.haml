@@ -1,0 +1,20 @@
+%h1  My Items
+
+%a{href: new_item_path} Add an Item
+
+.inventoryContainer
+  - @items.each do |item|
+    .item
+      .itemName
+        = item.name
+      .itemPrice
+        = item.price
+        each
+      .itemQuantity
+        Quantity:
+        = item.quantity
+      .itemDistance
+        / TODO: Populate after geocoder setup
+      = link_to "Edit", edit_item_path(id: item.id)
+      = link_to "Delete", "/items/#{item.id}", method: :delete
+
