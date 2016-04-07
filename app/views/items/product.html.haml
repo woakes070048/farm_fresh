@@ -1,0 +1,15 @@
+%h1
+  =@item.name
+
+.productDetails
+  .productImages
+    = # Add carousel here
+  .productPrice
+    £
+    = @item.price
+  .productDescription
+    = @item.description
+  %label Quantity
+  %input{type: "text", class: "productQuantityInput"}
+  / TODO: Implement angular here so can use handle bars or use javascript ajax
+  = link_to "Add to Basket", "/cart/{{item.id}}", method: :post

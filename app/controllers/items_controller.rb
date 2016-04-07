@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_filter :authenticate_restaurant!, only: [:index, :show]
   before_filter :authenticate_farm!, only: [:farm_index, :show, :create, :destroy]
+  before_filter :authenticate_restaurant!, only: [:index, :show, :product]
 
   def index
     sort_column =
@@ -46,6 +46,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update(archived: true)
     render json: @item
+  end
+
+  def product
+    @item = Item.find(params[:id])
   end
 
   def item_params

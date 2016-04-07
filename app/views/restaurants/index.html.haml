@@ -20,8 +20,10 @@
 
     .itemsContainer
       %div{class: "item", "ng-repeat": "item in items"}
-        .itemName "{{item.name}}"
-        .itemDescription "{{item.description}}"
-        .itemPrice "{{item.price}}"
-        .itemQty "{{item.quantity}}"
+        .itemName {{item.name}}
+        .itemDescription {{item.description}}
+        .itemPrice {{item.price}}
+        .itemQty {{item.quantity}}
+        / %a{class: button, href: "/items/{{item.id"}
+        = link_to "View", "/product/{{item.id}}", class: "button"
 
