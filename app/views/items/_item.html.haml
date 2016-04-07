@@ -15,6 +15,11 @@
     .field
       = f.label :description
       = f.text_area :description
+    .images
+      = f.fields_for :images do |builder|
+        = render "image_fields", { f: builder }
+      = link_to_add_association "Add Image", f, :images
+
     = f.hidden_field :farm_id, value: current_farm.id
     .field
       = f.submit

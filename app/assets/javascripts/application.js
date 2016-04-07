@@ -17,4 +17,5 @@
 //= require angular-resource
 //= require angular-animate
 //= require angular-mocks
+//= require cocoon
 //= require_tree .

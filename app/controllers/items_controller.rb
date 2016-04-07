@@ -50,6 +50,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.images.build
     @categories = Category.all.where("parent_id IS NOT null").map do |category|
       [category.name, category.id]
     end

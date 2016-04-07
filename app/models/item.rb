@@ -6,6 +6,8 @@ class Item < ActiveRecord::Base
   validates_presence_of :name, :category, :farm
   validates :price, numericality: { greater_than: 0}
 
+  accepts_nested_attributes_for :images, reject_if: :all_blank, allow_destroy: true
+
   before_create :default_values
   before_destroy :archive_item
 
