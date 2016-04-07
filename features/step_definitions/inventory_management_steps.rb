@@ -27,11 +27,11 @@ When(/^I fill in the form correctly$/) do
   fill_in "item_description", with: "Sweet Apple Pie"
   fill_in "item_price", with: "2.49"
   fill_in "item_quantity", with: "57"
-  find('#categorySelection').find(:xpath, 'option[3]').select_option
+  find('#item_category_id').find(:xpath, 'option[1]').select_option
 end
 
 When(/^I click on the 'Save' button$/) do
-  click_button "Save"
+  click_button "Create Item"
 end
 
 Then(/^I should see the new product in the items list\.$/) do
@@ -40,7 +40,8 @@ end
 
 When(/^I navigate to a product's edit page$/) do
   visit farm_items_path
-  page.all(".item").first.find_css(".productEditButton").click
+  @edit_item_id = page.all(".item").first[:id]
+  page.all(".item").first.find_css(".editItemButton").first.click
 end
 
 When(/^I change the price$/) do
@@ -48,18 +49,18 @@ When(/^I change the price$/) do
 end
 
 When(/^I click on the 'Update' button$/) do
-  click_button "Update"
+  click_button "Update Item"
 end
 
 Then(/^the product should have the new price$/) do
-  qty = page.all(".item").first.find_css(".itemQty").first.visible_text.to_i
+  qty = page.find_by_id(@edit_item_id).find_css(".itemQuantity").first.visible_text.split(":")[1].strip.to_i
   expect(qty).to be 999
 end
 
 When(/^I click on the 'Delete' button$/) do
- farm_items_path
- @name = page.all(".item").first.find_css(".itemName").first.visible_text
- page.all(".item").first.find_css(".productDeleteButton").click
+  visit farm_items_path
+  @edit_item_id = page.all(".item").first[:id]
+  page.all(".item").first.find_css(".deleteItemButton").first.click
 end
 
 When(/^I click 'Ok' on the dialog box$/) do
@@ -67,13 +68,13 @@ When(/^I click 'Ok' on the dialog box$/) do
 end
 
 Then(/^I should no longer see the product on my items page$/) do
-  expect(page).to_not have_content @name
+  expect(Proc.new {page.find_by_id(@edit_item_id)}).to raise_error Capybara::ElementNotFound
 end
 
 When(/^I fill in the "([^"]*)" field incorrectly with "([^"]*)"$/) do |field, text|
   fill_in "item_#{field}", with: text
 end
 
-Then(/^I should see a error message for "([^"]*)"$/) do |error_message|
-  expect(page).to have_content error_message
+Then(/^I should not be able to save$/) do
+  expect(current_path).to eq new_item_path
 end

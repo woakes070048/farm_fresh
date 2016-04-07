@@ -24,17 +24,14 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def farm_index
-    @items = current_farm.items.live.paginate(page: params[:page]).includes(:images)
-  end
 
   def create
     @item = Item.create(item_params)
 
     if @item.valid?
-      redirect_to :farm_index, notice: "Item created"
+      redirect_to farm_items_path, notice: "Item created"
     else
-      redirect_to :farm_index, notice: "Could not create item"
+      redirect_to farm_items_path, notice: "Could not create item"
     end
 
   end
@@ -75,6 +72,10 @@ class ItemsController < ApplicationController
   def product
     @item = Item.find(params[:id])
     @categories = get_categories_list
+  end
+
+  def farm_index
+    @items = current_farm.items.live.order(name: "ASC").paginate(page: params[:page]).includes(:images)
   end
 
   def item_params

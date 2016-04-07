@@ -18,21 +18,23 @@ Feature: Inventory Management
       And I click on the 'Save' button
     Then I should see the new product in the items list.
 
-  # Scenario: Editing an existing product
-  #   When I navigate to a product's edit page
-  #     And I change the price
-  #     And I click on the 'Update' button
-  #   Then the product should have the new price
+  @javascript
+  Scenario: Editing an existing product
+    When I navigate to a product's edit page
+      And I change the price
+      And I click on the 'Update' button
+    Then the product should have the new price
 
-  # Scenario: Validating a Form
-  #   When I navigate to a new product page
-  #     And I fill in the "quantity" field incorrectly with "blah"
-  #     And I fill in the "price" field incorrectly with "blah"
-  #   Then I should see a error message for "nvalid quantity"
-  #     And I should see a error message for "invalid price"
+  @javascript
+  Scenario: Validating a Form
+    When I navigate to a new product page
+      And I fill in the "quantity" field incorrectly with "blah"
+      And I fill in the "price" field incorrectly with "blah"
+    Then I should not be able to save
 
-  # Scenario: Deleting a product
-  #   When I navigate to my items page
-  #     And I click on the 'Delete' button
-  #     And I click 'Ok' on the dialog box
-  #   Then I should no longer see the product on my items page
+  @javascript
+  Scenario: Deleting a product
+    When I navigate to my items page
+      And I click on the 'Delete' button
+      And I click 'Ok' on the dialog box
+    Then I should no longer see the product on my items page

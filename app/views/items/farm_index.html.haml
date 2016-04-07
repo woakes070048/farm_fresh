@@ -4,7 +4,7 @@
 
 .inventoryContainer
   - @items.each do |item|
-    .item
+    .item{id: "item_#{item.id}"}
       .itemName
         = item.name
       .itemPrice
@@ -15,6 +15,6 @@
         = item.quantity
       .itemDistance
         / TODO: Populate after geocoder setup
-      = link_to "Edit", edit_item_path(id: item.id)
-      = link_to "Delete", "/items/#{item.id}", method: :delete
+      = link_to "Edit", edit_item_path(id: item.id), class: "editItemButton"
+      = link_to "Delete", "/items/#{item.id}", method: :delete, class: "deleteItemButton"
 
