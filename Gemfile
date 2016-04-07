@@ -17,6 +17,9 @@ gem 'devise'
 gem 'angularjs-rails'
 gem 'will_paginate'
 gem 'cocoon'
+gem 'fog'
+gem 'carrierwave'
+gem 'rmagick'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

@@ -80,7 +80,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :quantity, :price, :farm_id, :category_id, :description,
-      images_attributes: [:image, :_destroy])
+      images_attributes: [:id, :image, :_destroy])
   end
 
   def get_categories_list

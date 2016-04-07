@@ -1,4 +1,6 @@
 .nested-fields
+  .itemImage
+    = image_tag f.object.image.url unless f.object.image.url.nil?
   = label_tag "Select Image"
-  = f.file_field :name
+  = f.file_field :image
   = link_to_remove_association "Remove Image", f
