@@ -44,7 +44,7 @@ describe ItemsController, type: :controller do
     it "should return a specific item" do
       sign_in @restaurant1
       id = Item.first.id
-      get :show, {id: id}
+      get :show, {format: JSON, id: id}
 
       item = JSON.parse(response.body)
       expect(item["name"]).to eq "Eggs"
@@ -63,12 +63,9 @@ describe ItemsController, type: :controller do
 
     it "should allow me to see my items" do
       sign_in @farm
-      get :farm_index, {format: JSON}
-      item_data = JSON.parse(response.body)
-
-      item_data.each do |item|
-        expect(item["farm_id"]).to eq @farm.id
-      end
+      get :farm_index
+      expect(response).to have_http_status(:success)
+      expect(response.body).to have_content "My Items"
     end
 
     it "should allow a farm to create an item with valid data" do
