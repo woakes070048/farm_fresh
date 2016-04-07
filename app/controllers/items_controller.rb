@@ -1,12 +1,13 @@
 class ItemsController < ApplicationController
-  before_filter :authenticate_farm!, only: [:create, :update]
+  before_filter :authenticate_restaurant!, only: [:index, :show]
+  before_filter :authenticate_farm!, only: [:farm_index, :show, :create, :destroy]
 
   def index
     sort_column =
       params[:sort_option].nil? ? :price : params[:sort_option].strip.downcase
+    #TODO: Handle sortby distance after geocoder is setup
 
     if params[:category_id].nil?
-
       @items = Item.order({ sort_column.to_sym => "DESC" }).
         paginate(page: params[:page], per_page: 9).
         includes(:images)
@@ -22,6 +23,10 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     render json: @item
+  end
+
+  def farm_index
+    @items = current_farm.items.paginate(page: params[:page]).includes(:images)
   end
 
   def create
