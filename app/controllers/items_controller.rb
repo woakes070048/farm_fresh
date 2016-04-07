@@ -21,8 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id]).includes(:images)
-    # render json: @item
+    @item = Item.find(params[:id])
   end
 
   def farm_index
