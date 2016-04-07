@@ -1,28 +1,22 @@
-== README
+== Farm Fresh
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is my final project, after training at WeGotCoders[http://wegotcoders.com/] for 3 months
 
-Things you may want to cover:
+The app is designed to bring restaurants together with local farmers, enabling restaurants to source local produce and farmers to find more customers for their goods.
 
-* Ruby version
+The main technology used includes:
 
-* System dependencies
+* Web framework - Rails
+* Database - postgres
+* User authenication - Devise and Twitter oauth
+* Stripe for payments
+* Google maps to find local farmers
 
-* Configuration
+A live preview of the site is coming soon
 
-* Database creation
+The pivotal tracker project is here[https://www.pivotaltracker.com/n/projects/1567387]
 
-* Database initialization
+More about myself:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Twitter(https://twitter.com/ketpatdev)
+* Blog(http://ketan.me.uk/)
