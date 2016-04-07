@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   root "application#index"
 
   resources :categories, only: [:index]
-  resources :items, only: [:index, :create, :show, :update, :destroy]
+  resources :items, only: [:index, :create, :show, :update, :destroy, :new, :edit]
   get "/inventory" => "items#farm_index", as: :farm_items
   get "/product/:id" => "items#product", as: :product
   # The priority is based upon order of creation: first created -> highest priority.
