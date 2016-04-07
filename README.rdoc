@@ -4,19 +4,21 @@ This application is my final project, after training at WeGotCoders[http://wegot
 
 The app is designed to bring restaurants together with local farmers, enabling restaurants to source local produce and farmers to find more customers for their goods.
 
-The main technology used includes:
+The main technologies used includes:
 
 * Web framework - Rails
 * Database - postgres
+* Angular for partial front end
 * User authenication - Devise and Twitter oauth
 * Stripe for payments
 * Google maps to find local farmers
+* Amazon S3 for file storage
 
-A live preview of the site is coming soon
+A link to the live preview of the site is coming soon
 
 The pivotal tracker project is here[https://www.pivotaltracker.com/n/projects/1567387]
 
 More about myself:
 
-* Twitter(https://twitter.com/ketpatdev)
-* Blog(http://ketan.me.uk/)
+* Twitter[https://twitter.com/ketpatdev]
+* Blog[http://ketan.me.uk/]
