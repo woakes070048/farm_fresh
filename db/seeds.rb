@@ -78,8 +78,15 @@ restaurant = Restaurant.create(name: "Edgemoor Inn Ltd", street: "Gloucester Roa
                    logo: "http://www.yell.comhttp://cdn.yell.com/cdn/yellapi/asset/47F5F723144887C3/thumbnail",
                    email: "rest@1.com", password: "12345678", password_confirmation: "12345678")
 
-farm.items.create(name: "Bakewell", quantity: 200, price: 0.50, category: b,
+farm.items.create(name: "Bakewell", quantity: 150, price: 0.50, category: b,
                   description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
+farm.items.create(name: "Bakewell", quantity: 900, price: 0.67, category: b,
+                  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
+farm.items.create(name: "Bakewell", quantity: 30, price: 0.99, category: b,
+                  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
+farm.items.create(name: "Bakewell", quantity: 67, price: 0.20, category: b,
+                  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
+
 farm.items.create(name: "Mature Cheddar", quantity: 78, price: 2.99, category: c,
                   description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
 farm.items.create(name: "Ham", quantity: 44, price: 1.79, category: d,

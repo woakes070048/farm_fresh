@@ -9,7 +9,7 @@ angular.module("Catalog", ["ngResource"])
     return $resource("/items.json/:id");
   }])
 
-  .controller("CategoriesCtrl", ["$scope", "Category", "Item", function($scope, Category, Item) {
+  .controller("CategoriesCtrl", ["$rootScope", "$scope", "Category", "Item", function($rootScope, $scope, Category, Item) {
     $scope.sortList = ["Price", "Quantity", "Distance"];
 
     $scope.getCategories = function(parent_id = null, parent) {
@@ -24,7 +24,7 @@ angular.module("Catalog", ["ngResource"])
       else {
         $scope.atTopLevel = false;
         $scope.currentCategory = parent_id;
-        // $scope.items = parent_id.items;
+        $rootScope.currentCategory = parent;
       }
 
       var categories = Category.query({parent_id: parent_id}, function () {
@@ -36,10 +36,15 @@ angular.module("Catalog", ["ngResource"])
 
     $scope.setItems = function(category) {
       $scope.items = category.items;
+      $rootScope.items = category.items;
     }
 
     $scope.setSortOption = function() {
-      // TODO: Sort by items
+      if ($scope.currentCategory != null) {
+        var sortedItems = Item.query( {sort_option: $scope.selectedSort,
+                                       category_id: $scope.currentCategory},
+          function() { $scope.items = sortedItems; })
+      }
     }
 
   }])
