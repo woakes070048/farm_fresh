@@ -9,7 +9,7 @@ Then(/^I should see a google maps view$/) do
 end
 
 Then(/^I should a see a list of those farms next to the map$/) do
-  expect(page).to have_css "#farmListContainer"
+  expect(page).to have_css "#farmList"
   expect(page).to have_css ".farmListItem"
 end
 

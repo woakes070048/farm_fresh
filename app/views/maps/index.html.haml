@@ -4,9 +4,20 @@
 
 %h1 Farms Near Me
 
+#farmList
+  - @nearby_farms.each do |farm|
+    .farmListItem
+      .field
+        = farm.name
+      .field
+        Address:
+        = farm.full_address
+      .field
+        Distance(miles):
+        = farm.distance_from(@my_position).round(2)
+
 .mapContainer
   #map
-
 
 :javascript
   var mapHandler = initMap();
