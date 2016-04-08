@@ -13,4 +13,3 @@ Feature: Finding Farms
       And I click on find farms near me
     Then I should see a google maps view
       And I should a see a list of those farms next to the map
-      And I should see some pins on the google map

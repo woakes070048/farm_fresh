@@ -1,11 +1,37 @@
 require 'rails_helper'
 
 RSpec.describe MapsController, type: :controller do
+  render_views
 
-  describe "GET #index" do
-    it "returns http success" do
+  before do
+    create_helper_objects
+
+    allow(controller).to receive(:authenticate_restaurant!).and_return(true)
+    allow(controller).to receive(:current_restaurant).and_return(@restaurant1)
+
+    User.all.each do |user|
+      if user.latitude.nil?
+        pos = user.geocode
+        user.update(password: "12345678", password_confirmation: "12345678",
+                    latitude: pos[0], longitude: pos[1])
+      end
+    end
+  end
+
+  describe "index" do
+    it "should return http success on a html request" do
       get :index
       expect(response).to have_http_status(:success)
+    end
+
+    it "should return json data on a json request" do
+      get :index, {format: :json}
+      data = JSON.parse(response.body)
+      expect(data.first).to have_key "name"
+      expect(data.first).to have_key "address"
+      expect(data.first).to have_key "lat"
+      expect(data.first).to have_key "lng"
+      expect(data.first).to have_key "picture"
     end
   end
 

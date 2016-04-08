@@ -12,7 +12,3 @@ Then(/^I should a see a list of those farms next to the map$/) do
   expect(page).to have_css "#farmList"
   expect(page).to have_css ".farmListItem"
 end
-
-Then(/^I should see some pins on the google map$/) do
-  expect(page).to have_css '#markers img'
-end

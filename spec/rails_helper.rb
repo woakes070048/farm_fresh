@@ -23,10 +23,12 @@ def create_helper_objects
   @category = Category.create(name: "Eggs")
   @child_category = Category.create(name: "Chicken Eggs", parent: @category)
 
-  @farm = Farm.create(name:                  "Pro Egg Farm",
-                      email:                 "1@1.com",
-                      password:              '12345678',
-                      password_confirmation: "12345678")
+  # @farm = Farm.create(name:                  "Pro Egg Farm",
+  #                     email:                 "1@1.com",
+  #                     password:              '12345678',
+  #                     password_confirmation: "12345678")
+
+  @farm = Farm.create(name: "BROOMFIELDS FARM SHOP", email: "1@1.com", password: "12345678", password_confirmation: "12345678", street: "School Plantation, ", city: "Worcester", post_code: "WR6 6NF", region: "Worcestershire", remote_logo_url: "https://unsplash.it/100/100/?random")
 
   @eggs = Item.create(name: 'Eggs', price: 0.20, quantity: 500, category: @category, farm: @farm)
   Item.create(name: 'Eggs1', price: 0.20, quantity: 500, category: @category, farm: @farm)
@@ -43,10 +45,12 @@ def create_helper_objects
   Item.create(name: 'Eggs12', price: 0.20, quantity: 500, category: @category, farm: @farm)
   Item.create(name: 'Eggs13', price: 0.20, quantity: 500, category: @category, farm: @farm)
 
-  @restaurant1 = Restaurant.create(email:                 "1@2.com",
-                                   name:                  "Top Pastries",
-                                   password:              "12345678",
-                                   password_confirmation: "12345678")
+  # @restaurant1 = Restaurant.create(email:                 "1@2.com",
+  #                                  name:                  "Top Pastries",
+  #                                  password:              "12345678",
+  #                                  password_confirmation: "12345678")
+
+  @restaurant1 = Restaurant.create(name: "BROOMFIELDS FARM SHOP", email: "1@2.com", password: "12345678", password_confirmation: "12345678", street: "School Plantation, ", city: "Worcester", post_code: "WR6 6NF", region: "Worcestershire", remote_logo_url: "https://unsplash.it/100/100/?random")
 
   DeliveryOption.create(name: "1st Class", price: 2.99)
 
