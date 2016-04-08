@@ -11,6 +11,6 @@ Feature: Finding Farms
     Given I am logged in as a restaurant
     When I navigate to my home page
       And I click on find farms near me
-    Then I should see a google maps view with pins for local farms
+    Then I should see a google maps view
       And I should a see a list of those farms next to the map
       And I should see some pins on the google map
