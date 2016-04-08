@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_filter :authenticate_farm!, only: [:farm_index, :show, :create, :destroy, :new, :edit]
-  before_filter :authenticate_restaurant!, only: [:index, :show, :product]
+  before_filter :authenticate_restaurant!, only: [:index, :product]
+  before_filter :authenticate_farm!, only: [:farm_index, :create, :destroy, :new, :edit]
 
   def index
     sort_column =

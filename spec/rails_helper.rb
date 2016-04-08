@@ -12,6 +12,7 @@ require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'rack_session_access/capybara'
+require 'support/geocoder'
 
 RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller

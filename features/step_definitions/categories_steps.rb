@@ -3,7 +3,6 @@ Given(/^I am logged in as a restaurant$/) do
   load_categories
   load_items
 
-
   visit new_restaurant_session_path
   fill_in "restaurant_email", with: "rest@1.com"
   fill_in "restaurant_password", with: "12345678"

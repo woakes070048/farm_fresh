@@ -4,6 +4,7 @@ describe ItemsController, type: :controller do
 
   before do
     create_helper_objects
+    sleep(0.5)
   end
 
   describe "As a restaurant" do
@@ -44,8 +45,7 @@ describe ItemsController, type: :controller do
     it "should return a specific item" do
       sign_in @restaurant1
       id = Item.first.id
-      get :show, {format: JSON, id: id}
-
+      get :show, {format: :json, id: id}
       item = JSON.parse(response.body)
       expect(item["name"]).to eq "Eggs"
       expect(item["price"].to_f).to eq 0.20
@@ -70,7 +70,7 @@ describe ItemsController, type: :controller do
 
     it "should allow a farm to create an item with valid data" do
       sign_in @farm
-      get :show, { id: Item.first.id}
+      get :show, { format: :json, id: Item.first.id}
       item_data = JSON.parse(response.body)
       item_data["id"] = nil
       item_data["farm_id"] = Farm.first
@@ -95,7 +95,12 @@ describe ItemsController, type: :controller do
       expect(Item.live.count).to eq(previous_live_count - 1)
     end
 
-
+    it "should show me the new form when creating a new item" do
+      sign_in @farm
+      get :new
+      expect(response).to have_http_status(:success)
+      expect(response.body).to have_content "Add a New Item"
+    end
 
   end
 

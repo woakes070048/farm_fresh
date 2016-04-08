@@ -2,10 +2,7 @@
 def load_users
   Restaurant.destroy_all
 
-  restaurant = Restaurant.create(name: "Edgemoor Inn Ltd", street: "Gloucester Road",
-                   city: "Stroud", post_code: "GL6 6ND", region: "Gloucestershire",
-                   logo: "http://www.yell.comhttp://cdn.yell.com/cdn/yellapi/asset/47F5F723144887C3/thumbnail",
-                   email: "rest@1.com", password: "12345678", password_confirmation: "12345678")
+  restaurant = Restaurant.create(name: "BROOMFIELDS FARM SHOP", email: "rest@1.com", password: "12345678", password_confirmation: "12345678", street: "School Plantation, ", city: "Worcester", post_code: "WR6 6NF", region: "Worcestershire", remote_logo_url: "https://unsplash.it/100/100/?random")
 
 end
 
@@ -20,9 +17,7 @@ end
 def load_items
 
   if Farm.find_by(email: "farm@1.com").nil?
-    Farm.create(name: "Test Shop", street: "School Plantation",
-      city: "Worcester", post_code: "WR6 6NF", region: "Worcestershire",
-      email: "farm@1.com", password: "12345678", password_confirmation: "12345678")
+    Farm.create(name: "BROOMFIELDS FARM SHOP", email: "farm@1.com", password: "12345678", password_confirmation: "12345678", street: "School Plantation, ", city: "Worcester", post_code: "WR6 6NF", region: "Worcestershire", remote_logo_url: "https://unsplash.it/100/100/?random")
   end
 
   farm = Farm.find_by(email: "farm@1.com")

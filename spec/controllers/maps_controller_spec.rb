@@ -8,14 +8,6 @@ RSpec.describe MapsController, type: :controller do
 
     allow(controller).to receive(:authenticate_restaurant!).and_return(true)
     allow(controller).to receive(:current_restaurant).and_return(@restaurant1)
-
-    User.all.each do |user|
-      if user.latitude.nil?
-        pos = user.geocode
-        user.update(password: "12345678", password_confirmation: "12345678",
-                    latitude: pos[0], longitude: pos[1])
-      end
-    end
   end
 
   describe "index" do

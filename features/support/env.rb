@@ -6,6 +6,7 @@
 
 require 'cucumber/rails'
 require 'capybara/poltergeist'
+require Rails.root.join("spec/support/geocoder")
 
 # Capybara.register_driver :poltergeist do |app|
 #     Capybara::Poltergeist::Driver.new(app, {debug: false})

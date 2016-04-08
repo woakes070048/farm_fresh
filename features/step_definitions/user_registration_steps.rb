@@ -12,7 +12,10 @@ When(/^I fill in the "([^"]*)" form correctly$/) do |user_type|
   fill_in "#{user_type}_email", with: "test@#{user_type}.com"
   fill_in "#{user_type}_password", with: "12345678"
   fill_in "#{user_type}_password_confirmation", with: "12345678"
-  # TODO: Add address fields
+  fill_in "#{user_type}_street", with: "School Plantation,"
+  fill_in "#{user_type}_city", with: "Worcester"
+  fill_in "#{user_type}_post_code", with: "WR6 6NF"
+  fill_in "#{user_type}_region", with: "Worcestershire"
   click_button 'Sign up'
 end
 
