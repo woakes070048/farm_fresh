@@ -18,4 +18,6 @@
 //= require angular-animate
 //= require angular-mocks
 //= require cocoon
+//= require underscore
+//= require gmaps/google
 //= require_tree .

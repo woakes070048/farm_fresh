@@ -21,6 +21,7 @@ gem 'fog'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'geocoder'
+gem 'gmaps4rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

@@ -221,6 +221,7 @@ GEM
     gherkin (3.2.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
     haml (4.0.7)
       tilt
     haml-rails (0.9.0)
@@ -411,6 +412,7 @@ DEPENDENCIES
   figaro
   fog
   geocoder
+  gmaps4rails
   haml-rails
   jasmine
   jasmine-jquery-rails
