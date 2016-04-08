@@ -25,6 +25,13 @@ Feature: Browsing Products
      And I click on a price sort button
     Then I should see the products with the highest price on top
 
+  # TODO: Not yet implemented
+  @javascript
+  Scenario: Sorting products by distance
+    When I click on the 'Chicken' category
+      And I click on the distance sort button
+    Then I should see a list of product from farms that are closest to me on top
+
   @javascript
   Scenario: Viewing a product
     When I click on the 'Chicken' category

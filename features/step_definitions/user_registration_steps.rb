@@ -33,7 +33,7 @@ Then(/^I should be taken to the farm dashboard$/) do
 end
 
 When(/^I navigate to the home page$/) do
-  pending
+  visit "/"
 end
 
 When(/^I click "([^"]*)" button$/) do |arg1|
