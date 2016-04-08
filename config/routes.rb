@@ -20,9 +20,12 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index]
   resources :items, only: [:index, :create, :show, :update, :destroy, :new, :edit]
-  resource :map, only: [:show]
+
   get "/inventory" => "items#farm_index", as: :farm_items
   get "/product/:id" => "items#product", as: :product
+  get "/map" => "maps#index", as: :map
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
