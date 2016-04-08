@@ -20,6 +20,7 @@ gem 'cocoon'
 gem 'fog'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'geocoder'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

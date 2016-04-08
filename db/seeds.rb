@@ -7,64 +7,68 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-FavouriteFarm.destroy_all
-ItemImage.destroy_all
-LineItem.destroy_all
-# CartItem.destroy_all
-Item.destroy_all
-Category.destroy_all
-Order.destroy_all
-Status.destroy_all
-DeliveryOption.destroy_all
-User.destroy_all
+def clean_database
+  FavouriteFarm.destroy_all
+  ItemImage.destroy_all
+  LineItem.destroy_all
+  # CartItem.destroy_all
+  Item.destroy_all
+  Category.destroy_all
+  Order.destroy_all
+  Status.destroy_all
+  DeliveryOption.destroy_all
+  User.destroy_all
+end
 
-p1 = Category.create(name: "Bakery")
-Category.create(name: "Bread" ,parent: p1)
-@b = Category.create(name: "Cakes" ,parent: p1)
-Category.create(name: "Biscuits" ,parent: p1)
-Category.create(name: "Pies" ,parent: p1)
+def seed_ctegories
+  p1 = Category.create(name: "Bakery")
+  Category.create(name: "Bread" ,parent: p1)
+  @b = Category.create(name: "Cakes" ,parent: p1)
+  Category.create(name: "Biscuits" ,parent: p1)
+  Category.create(name: "Pies" ,parent: p1)
 
-p1 = Category.create(name: "Dairy")
-c = Category.create(name: "Cheese" ,parent: p1)
-Category.create(name: "Milk & Yoghurt" ,parent: p1)
-Category.create(name: "Butter & Cream" ,parent: p1)
-Category.create(name: "Eggs" ,parent: p1)
+  p1 = Category.create(name: "Dairy")
+  c = Category.create(name: "Cheese" ,parent: p1)
+  Category.create(name: "Milk & Yoghurt" ,parent: p1)
+  Category.create(name: "Butter & Cream" ,parent: p1)
+  Category.create(name: "Eggs" ,parent: p1)
 
-p1 = Category.create(name: "Deli")
-@d = Category.create(name: "Meat Products" ,parent: p1)
-Category.create(name: "Non-meat Products" ,parent: p1)
-Category.create(name: "Olives" ,parent: p1)
-Category.create(name: "Oils & Vinegars" ,parent: p1)
+  p1 = Category.create(name: "Deli")
+  @d = Category.create(name: "Meat Products" ,parent: p1)
+  Category.create(name: "Non-meat Products" ,parent: p1)
+  Category.create(name: "Olives" ,parent: p1)
+  Category.create(name: "Oils & Vinegars" ,parent: p1)
 
-p1 = Category.create(name: "Drinks")
-Category.create(name: "Wine" ,parent: p1)
-@e = Category.create(name: "Beers & Cider" ,parent: p1)
-Category.create(name: "Spirits" ,parent: p1)
-Category.create(name: "Juices & Soft Drinks" ,parent: p1)
+  p1 = Category.create(name: "Drinks")
+  Category.create(name: "Wine" ,parent: p1)
+  @e = Category.create(name: "Beers & Cider" ,parent: p1)
+  Category.create(name: "Spirits" ,parent: p1)
+  Category.create(name: "Juices & Soft Drinks" ,parent: p1)
 
-p1 = Category.create(name: "Fish")
-Category.create(name: "White and Oily fish" ,parent: p1)
-Category.create(name: "Smoked" ,parent: p1)
-Category.create(name: "Shellfish" ,parent: p1)
-@f = Category.create(name: "Salmon" ,parent: p1)
+  p1 = Category.create(name: "Fish")
+  Category.create(name: "White and Oily fish" ,parent: p1)
+  Category.create(name: "Smoked" ,parent: p1)
+  Category.create(name: "Shellfish" ,parent: p1)
+  @f = Category.create(name: "Salmon" ,parent: p1)
 
-p1 = Category.create(name: "Fruit")
-Category.create(name: "Apples & Pears" ,parent: p1)
-Category.create(name: "Soft Fruit" ,parent: p1)
-@g = Category.create(name: "Dried" ,parent: p1)
-Category.create(name: "Preserves" ,parent: p1)
+  p1 = Category.create(name: "Fruit")
+  Category.create(name: "Apples & Pears" ,parent: p1)
+  Category.create(name: "Soft Fruit" ,parent: p1)
+  @g = Category.create(name: "Dried" ,parent: p1)
+  Category.create(name: "Preserves" ,parent: p1)
 
-p1 = Category.create(name: "Veg")
-Category.create(name: "Seasonal" ,parent: p1)
-Category.create(name: "Salads & Herbs" ,parent: p1)
-Category.create(name: "Mushrooms" ,parent: p1)
-Category.create(name: "Root Vegetables" ,parent: p1)
+  p1 = Category.create(name: "Veg")
+  Category.create(name: "Seasonal" ,parent: p1)
+  Category.create(name: "Salads & Herbs" ,parent: p1)
+  Category.create(name: "Mushrooms" ,parent: p1)
+  Category.create(name: "Root Vegetables" ,parent: p1)
 
-p1 = Category.create(name: "Meat")
-@a = Category.create(name: "Beef" ,parent: p1)
-Category.create(name: "Lamb" ,parent: p1)
-Category.create(name: "Game" ,parent: p1)
-Category.create(name: "Poultry" ,parent: p1)
+  p1 = Category.create(name: "Meat")
+  @a = Category.create(name: "Beef" ,parent: p1)
+  Category.create(name: "Lamb" ,parent: p1)
+  Category.create(name: "Game" ,parent: p1)
+  Category.create(name: "Poultry" ,parent: p1)
+end
 
 def seed_test_users
   Farm.create(name: "BROOMFIELDS FARM SHOP", email: "t1@farm.com", password: "12345678", password_confirmation: "12345678", street: "School Plantation, ", city: "Worcester", post_code: "WR6 6NF", region: "Worcestershire", remote_logo_url: "https://unsplash.it/100/100/?random")
@@ -737,6 +741,22 @@ farm.items.create(name: "Steak", quantity: 22, price: 4.88, category: @a,
 
 end
 
+def seed_geocode_for_users
+  User.all.each do |user|
+    puts "Request address: #{user.full_address}"
+    pos = user.geocode
+    user.update(latitude: pos[0], longitude: pos[1], password: "12345678", password_confirmation: "12345678") unless pos.nil?
+    puts "Retrieved #{pos} for #{user.full_address}"
+    puts "Saved data = #{[user.latitude, user.longitude]}"
+    puts
+    sleep(0.25)
+  end
+end
+
+seed_geocode_for_users
+
 # seed_users
-seed_test_users
-seed_items
+# clean_database
+# seed_ctegories
+# seed_test_users
+# seed_items
