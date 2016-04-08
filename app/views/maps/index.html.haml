@@ -6,19 +6,18 @@
 
 #farmList
   - @nearby_farms.each do |farm|
-    .farmListItem
+    .farmListItem{id: "farm_#{farm.id}"}
       .field
         = farm.name
       .field
         Address:
-        = farm.full_address
+        = farm.full_address.gsub(",", " ")
       .field
         Distance(miles):
-        = farm.distance_from(@my_position).round(2)
+        = farm.distance
 
 .mapContainer
   #map
 
 :javascript
-  var mapHandler = initMap();
-  //var markers = mapHandler.addMarkers(= raw @nearby_farms.to_json);
+  initMap();
