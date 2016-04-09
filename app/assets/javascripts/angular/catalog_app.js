@@ -1,5 +1,5 @@
 
-var app = angular.module("Catalog", ["ngResource"])
+var app = angular.module("Catalog", ["ngResource", "ngAnimate"])
 
   .factory("Category", ["$resource", function($resource) {
     return $resource("/categories.json/:id");

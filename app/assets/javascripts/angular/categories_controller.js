@@ -4,10 +4,10 @@
     $scope.sortList = ["Price", "Quantity", "Distance"];
 
     $scope.getCategories = function(parent_id, parent) {
-      if (parent != null)
+      if (parent != null) {
         $scope.items = parent.items;
+      }
 
-      // debugger;
       if (parent_id == null) {
         $scope.atTopLevel = true
         $scope.currentCategory = null;
@@ -38,4 +38,4 @@
       }
     }
 
-  }])
+  }]);
