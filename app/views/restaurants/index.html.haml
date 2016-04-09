@@ -26,8 +26,7 @@
         .itemDescription{"ng-bind": "item.description"}
         .itemPrice{"ng-bind": "item.price"}
         .itemQty{"ng-bind": "item.quantity"}
-        / %a{class: button, href: "/items/{{item.id"}
-        =# link_to "View", "/product/{{item.id}}", class: "button"
+        %span Quantity:
         %input{type: "number", min:"0", step: "1", "ng-model": "item_quantity"}
         %a{"ng-controller": "BasketsCtrl", "ng-click": "addToBasket(item.id)"}
           %img{src: "https://s3-eu-west-1.amazonaws.com/kpfarmfresh/add_to_basket.png", class:"basketIcon"}

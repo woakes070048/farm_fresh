@@ -22,6 +22,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'jquery-ui-rails'
 
 group :production do
   gem 'rails_12factor'

@@ -13,6 +13,12 @@ var app = angular.module("Catalog", ["ngResource", "ngAnimate"])
     return $resource("/baskets.json/:id")
   }]);
 
+app.config([
+  "$httpProvider", function($httpProvider) {
+    $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+  }
+]);
+
 
 
   // .controller("ItemsCtrl", ["$scope", "Item", function($scope, Item) {

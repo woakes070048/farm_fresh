@@ -1,4 +1,20 @@
 
+$(function() {
+
+  var pos = $("#basket").offset();
+  var basketCount = $("#basketCount");
+  basketCount.offset({top: pos.top, left: pos.left + 16});
+
+});
+
+function shakeBasket() {
+  $("#basket").effect( "shake", {
+    times: 3,
+    distance: 3,
+    direction: "right"
+  }, 1000 );
+}
+
 // $(function() {
 
 //   $(".basketIcon").mouseover(function() {
