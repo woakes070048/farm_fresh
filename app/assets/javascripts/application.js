@@ -19,4 +19,8 @@
 //= require angular-mocks
 //= require cocoon
 //= require gmaps/google
-//= require_tree .
+//= require underscore
+//= require angular/catalog_app
+//= require angular/categories_controller
+//= require angular/baskets_controller
+

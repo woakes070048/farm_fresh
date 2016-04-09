@@ -1,15 +1,6 @@
 
-angular.module("Catalog", ["ngResource"])
 
-  .factory("Category", ["$resource", function($resource) {
-    return $resource("/categories.json/:id");
-  }])
-
-  .factory("Item", ["$resource", function($resource) {
-    return $resource("/items.json/:id");
-  }])
-
-  .controller("CategoriesCtrl", ["$rootScope", "$scope", "Category", "Item", function($rootScope, $scope, Category, Item) {
+  app.controller("CategoriesCtrl", ["$rootScope", "$scope", "Category", "Item", function($rootScope, $scope, Category, Item) {
     $scope.sortList = ["Price", "Quantity", "Distance"];
 
     $scope.getCategories = function(parent_id, parent) {
@@ -48,7 +39,3 @@ angular.module("Catalog", ["ngResource"])
     }
 
   }])
-
-  .controller("ItemsCtrl", ["$scope", "Item", function($scope, Item) {
-
-  }]);
