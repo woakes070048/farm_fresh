@@ -6,10 +6,15 @@ class BasketsController < ApplicationController
   end
 
   def create
-    current_restaurant.basket_items.create(basket_item_params)
+    data = JSON.parse(params[:basket_item])
+    basket_item = current_restaurant.basket_items.create(item_id: data["item_id"], quantity: data["quantity"])
+
+    render json: basket_item
   end
 
-  def basket_item_params
-    params.require(:basket_item).permit(:item, :quantity)
+  def destroy
+    basket_item = BasketItem.find(params[:id])
+    basket_item.destroy
+    render json: basket_item
   end
 end

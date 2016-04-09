@@ -37,9 +37,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    # # needed to add this as a workaround for Items that got added without farms
-    # Item.all.each { |i| i.update(farm: Farm.first) }
-
     @item = Item.find(params[:id])
     @item.update(archived: true)
     redirect_to farm_items_path, notice: "Item removed"
