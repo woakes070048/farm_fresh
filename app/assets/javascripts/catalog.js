@@ -12,7 +12,7 @@ angular.module("Catalog", ["ngResource"])
   .controller("CategoriesCtrl", ["$rootScope", "$scope", "Category", "Item", function($rootScope, $scope, Category, Item) {
     $scope.sortList = ["Price", "Quantity", "Distance"];
 
-    $scope.getCategories = function(parent_id = null, parent) {
+    $scope.getCategories = function(parent_id, parent) {
       if (parent != null)
         $scope.items = parent.items;
 

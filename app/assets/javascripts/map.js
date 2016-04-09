@@ -7,16 +7,12 @@ function initMap() {
       },
       internal: {
         id: 'map'
-      },
-      zoom: 12
-
+      }
     },
     function(){
       getMarkers();
     }
   );
-
-
 }
 
 function getMarkers() {
@@ -25,6 +21,6 @@ function getMarkers() {
     markers = mapHandler.addMarkers(data);
     mapHandler.bounds.extendWith(markers);
     mapHandler.fitMapToBounds();
-    mapHandler.getMap().setZoom(8);
+    mapHandler.getMap().setZoom(9);
   });
 }
