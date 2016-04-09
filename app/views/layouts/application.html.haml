@@ -15,7 +15,7 @@
         = link_to "Sign Out", destroy_farm_session_path, method: :delete
       -elsif restaurant_signed_in?
         = link_to "Sign Out", destroy_restaurant_session_path, method: :delete
-        = link_to image_tag("https://s3-eu-west-1.amazonaws.com/kpfarmfresh/basket.png", {widtd: 32, height: 32}), baskets_path
+        = link_to image_tag("https://s3-eu-west-1.amazonaws.com/kpfarmfresh/basket.png", {width: 32, height: 32}), baskets_path
       -else
         = link_to "Restaurant Sign In", new_restaurant_session_path
         = link_to "Farm Sign In", new_farm_session_path

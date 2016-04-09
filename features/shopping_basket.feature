@@ -8,8 +8,9 @@ Feature: Shopping Basket
 
   @javascirpt
   Scenario: Adding prodcut to the basket
-    When I navigate to a product page
-      And I click the "Add to Basket" link
+    When I navigate to a category with products
+      And I fill in the first item's quantity with 10
+      And I click the 'Add to Basket' link
     Then I should see the number change in the basket icon
       And I should see a notification that indicates a product has been added
 
