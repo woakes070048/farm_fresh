@@ -713,7 +713,7 @@ def seed_users
   ]
 
   # sleep between each create to avoid maximising google's api limits
-  data.each do |creat_user|
+  data.each do |create_user|
     create_user.call
     sleep(0.25)
   end
