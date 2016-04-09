@@ -3,7 +3,6 @@ require 'rails_helper'
 describe Category, type: :model do
 
   before do
-    # Category.destroy_all
     @meat_category = Category.create(name: "Meat")
   end
 

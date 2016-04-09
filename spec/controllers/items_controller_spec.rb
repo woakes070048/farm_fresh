@@ -4,7 +4,6 @@ describe ItemsController, type: :controller do
 
   before do
     create_helper_objects
-    sleep(0.5)
   end
 
   describe "As a restaurant" do

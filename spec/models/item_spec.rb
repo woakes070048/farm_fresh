@@ -2,9 +2,6 @@ require 'rails_helper'
 
 describe Item, type: :model do
   before do
-    # Category.destroy_all
-    # Farm.destroy_all
-    # Item.destroy_all
     @category = Category.create(name: "Eggs")
 
     @farm = Farm.new(name:                  "Pro Egg Farm",

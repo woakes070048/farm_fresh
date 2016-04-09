@@ -22,7 +22,10 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'geocoder'
 gem 'gmaps4rails'
-gem 'rails_12factor'
+
+group :production do
+  gem 'rails_12factor'
+end
 
 # Use Unicorn as the app server
 # gem 'unicorn'
