@@ -1,6 +1,10 @@
 
-app.controller("BasketsCtrl", ["$scope", "BasketItem", function($scope, BasketItem) {
+app.controller("BasketsCtrl", ["$scope", "BasketItem", "$http", "$timeout", function($scope, BasketItem, $http, $timeout) {
+
   $scope.addToBasket = function(item_id) {
+    if($scope.item_quantity == null || $scope.item_quantity < 1) {
+      return;
+    }
 
     BasketItem.save({
       basket_item: {
@@ -8,16 +12,19 @@ app.controller("BasketsCtrl", ["$scope", "BasketItem", function($scope, BasketIt
         quantity: $scope.item_quantity
       }
     }, function(response) {
-      console.log(response);
+      $scope.getBasketCount();
       shakeBasket();
-      var pos = $("#basket").offset();
-      var basketNotify = $("#basketNotify")
-      basketNotify.offset({top: pos.top, left: pos.left});
-      basketNotify.fadeIn(300, function() {
-        $(this).delay(3000).fadeOut(300);
-      });
+      showItemAddedNotification();
     });
-
   };
 
+  $scope.getBasketCount = function() {
+    $http.get("/baskets/count")
+      .then(function(response) {
+        $scope.basket_count = response.data.count;
+        $("#basketCount").html(response.data.count);
+      });
+  }
+
+  $scope.getBasketCount();
 }]);

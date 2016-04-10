@@ -16,6 +16,10 @@ class BasketsController < ApplicationController
     render json: basket_item
   end
 
+  def count
+    render json: {count: current_restaurant.basket_items.count}
+  end
+
   def basket_item_params
     json_params = ActionController::Parameters.new(JSON.parse(request.body.read))
     json_params.require(:basket_item).permit(:item_id, :quantity)

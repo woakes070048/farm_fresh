@@ -16,10 +16,11 @@ describe BasketsController, type: :controller do
     end
   end
 
-  describe "POST #create" do
+  describe "Adding to basket" do
 
     it "should add a new basket item to the current_restaurant's basket" do
-      test_data = BasketItem.new(item: @eggs, quantity: 10)
+      # test_data = {"basket_item"=>{"item_id"=>@eggs.id, "quantity"=>2}}
+      test_data = BasketItem.new(item_id: @eggs.id, quantity: 20)
       previous_count = BasketItem.count
 
       post :create, {format: :json, basket_item: test_data.to_json}
@@ -32,7 +33,7 @@ describe BasketsController, type: :controller do
     end
   end
 
-  describe "DELETE #destroy" do
+  describe "Deleting from basket" do
 
     it "should delete a basket item with a valid id and return it" do
       basket_item = @restaurant1.basket_items.create(item: @eggs, quantity: 10)
@@ -43,6 +44,20 @@ describe BasketsController, type: :controller do
 
       expect(response_data).to have_key "id"
       expect(response_data).to have_value basket_item.id
+    end
+  end
+
+  describe "Getting basket count" do
+
+    before do
+      @restaurant1.basket_items.create(item: @eggs, quantity: 10);
+    end
+
+    it "should retrieve the correct number of items in the basket" do
+      current_count = BasketItem.count
+      get :count
+      data = JSON.parse(response.body)
+      expect(data.count).to be current_count
     end
   end
 end

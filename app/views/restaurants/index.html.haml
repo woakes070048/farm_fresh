@@ -2,7 +2,7 @@
 
 = link_to "Farms near me", map_path
 
-%div{id: "productsContainer", "ng-app": "Catalog", "ng-controller": "CategoriesCtrl"}
+%div{id: "productsContainer", "ng-controller": "CategoriesCtrl"}
 
   %aside
     %h4 Browse Products
@@ -27,7 +27,7 @@
         .itemPrice{"ng-bind": "item.price"}
         .itemQty{"ng-bind": "item.quantity"}
         %span Quantity:
-        %input{type: "number", min:"0", step: "1", "ng-model": "item_quantity"}
+        %input{type: "number", min:"0", step: "1", "ng-model": "item_quantity", "ng-init": "item_quantity=1"}
         %a{"ng-controller": "BasketsCtrl", "ng-click": "addToBasket(item.id)"}
           %img{src: "https://s3-eu-west-1.amazonaws.com/kpfarmfresh/add_to_basket.png", class:"basketIcon"}
 
