@@ -13,7 +13,6 @@ def load_categories
   Category.create(name: "Beef", parent: m)
 end
 
-
 def load_items
 
   if Farm.find_by(email: "farm@1.com").nil?
@@ -35,5 +34,30 @@ def load_items
                     category: Category.find_by(name: "Chicken"),
                     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
 
+end
+
+def create_order
+  DeliveryOption.create(name: "1st Class", price: 2.99)
+  Status.destroy_all
+  @in_progress_status = Status.create(name: "In Progress")
+  restaurant = Restaurant.find_by(email: "rest@1.com")
+
+  restaurant.basket_items.create(item: Item.first, quantity: 20)
+  restaurant.basket_items.create(item: Item.last, quantity: 30)
+
+  order = restaurant.orders.create(vat: 20, delivery_option: DeliveryOption.first)
+  restaurant.basket_items.each do |basket_item|
+    order.line_items.build(item_id: basket_item.item_id, quantity: basket_item.quantity)
+  end
+  order.save
+
+  restaurant.basket_items.destroy_all
+end
+
+def load_all_test_data
+  load_users
+  load_categories
+  load_items
+  create_order
 end
 

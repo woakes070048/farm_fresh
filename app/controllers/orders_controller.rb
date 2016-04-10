@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def index
     create unless params[:stripeToken].nil?
+    @orders = current_restaurant.orders
   end
 
   def show

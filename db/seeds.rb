@@ -754,6 +754,19 @@ def seed_geocode_for_users
   end
 end
 
+def seed_delivery_options
+  DeliveryOption.create(name: "1st Class", price: 7.99)
+  DeliveryOption.create(name: "2nd Class", price: 4.99)
+  DeliveryOption.create(name: "DHL",       price: 13.99)
+end
+
+def seed_status
+  Status.create(name: "In Progress")
+  Status.create(name: "Dispatched")
+  Status.create(name: "Cancelled")
+  Status.create(name: "On Hold")
+end
+
 # seed_geocode_for_users
 
 clean_database

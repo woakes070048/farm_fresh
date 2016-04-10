@@ -1,2 +1,19 @@
-%h1 Orders#index
-%p Find me in app/views/orders/index.html.haml
+%h1 My Orders
+
+#orderListContainer
+  - unless @orders.nil? @orders.each do |order|
+    .orderItem
+      %label: Order number:
+      .orderNumber #{order.id}
+      %label: Order date:
+      .orderDate #{order.created_at.strftime("%m/%d/%Y")}
+      %label: Status:
+      .orderStatus #{order.status.name}
+      %label: Delivery:
+      .orderDelivery #{order.delivery_option.name}
+      %label: Total (ex Vat):
+      .orderPrice £ #{order.calculate_total}
+  -else
+    %span You have no orders
+
+

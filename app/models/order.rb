@@ -9,19 +9,18 @@ class Order < ActiveRecord::Base
   validates_presence_of :restaurant, :delivery_option, :status
   validate :status, :set_default_status
 
-  # before_update :calculate_total
-  # before_create :calculate_total
+  before_update :calculate_total
+  before_create :calculate_total
   before_destroy :check_status
-
-  private
 
   def calculate_total
     self.total_ex_vat =
       line_items.inject(0) do |sum, line_item|
         sum + (line_item.item.price * line_item.quantity)
       end
-    true
   end
+
+  private
 
   def set_default_status
     self.status ||= Status.find_by(name: "In Progress")
