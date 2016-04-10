@@ -23,6 +23,7 @@ gem 'rmagick'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'jquery-ui-rails'
+gem 'stripe'
 
 group :production do
   gem 'rails_12factor'

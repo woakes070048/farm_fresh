@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'map/show'
+  # get 'map/show'
 
   devise_for :farms#, :controllers => { registrations: 'farm_registrations' }
   devise_for :restaurants#, :controllers => { registrations: 'restaurant_registrations' }
@@ -21,8 +21,9 @@ Rails.application.routes.draw do
   resources :categories, only: [:index]
   resources :items, only: [:index, :create, :show, :update, :destroy, :new, :edit]
   resources :baskets, only: [:index, :create, :destroy, :update]
-  get "/baskets/count" => "baskets#count"
+  resources :charges, only: [:new, :create]
 
+  get "/baskets/count" => "baskets#count"
   get "/inventory" => "items#farm_index", as: :farm_items
   get "/product/:id" => "items#product", as: :product
   get "/map" => "maps#index", as: :map
