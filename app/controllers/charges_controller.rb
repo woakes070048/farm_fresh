@@ -15,8 +15,8 @@ class ChargesController < ApplicationController
     charge = Stripe::Charge.create(
       :customer    => customer.id,
       :amount      => @amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
+      :description => 'Farm Fresh Customer',
+      :currency    => 'gbp'
     )
 
     redirect_to restaurant_root_path, notice: "Payment successful, thanks for your order."
