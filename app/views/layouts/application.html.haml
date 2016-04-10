@@ -17,16 +17,16 @@
       -elsif restaurant_signed_in?
         = link_to "Sign Out", destroy_restaurant_session_path, method: :delete
         %span{id: "basketNotify"} Item added to basket.
-        #basketContainer{"ng-controller": "BasketsCtrl"}
+        #basketContainer
           %a{href: baskets_url, "data-no-turbolink": true}
             %img{src: "https://s3-eu-west-1.amazonaws.com/kpfarmfresh/basket.png", id: "basket", width: 32, height: 32}
           #basketCountContainer
-            %span{id: "basketCount", "ng-model": "basket_count"}
+            %span{id: "basketCount"}
       -else
         = link_to "Restaurant Sign In", new_restaurant_session_path
         = link_to "Farm Sign In", new_farm_session_path
 
-
-    = yield
+    .container
+      = yield
 
     %footer

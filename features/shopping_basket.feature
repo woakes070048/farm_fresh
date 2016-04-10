@@ -13,24 +13,26 @@ Feature: Shopping Basket
     Then I should see the number change in the basket icon
       And I should see a notification that indicates a product has been added
 
-  @javascirpt
+  @javascript
   Scenario: Removing items from the basket
-    When I navigate to my basket
+    When I navigate to a category with products
+      And I click the 'Add to Basket' link
+      And I navigate to my basket
       And I click the 'Remove' link
     Then I should no longer see that item in my basket
 
-  # @javascirpt
-  # Scenario: Editing quantity before adding to basket
-  #   When I navigate to a product page
-  #     And I change the quantity to 100
-  #     And I click the "Add to Basket" link
-  #     And I navigate to to my basket
-  #   Then I should see a product with a quantity of 100
+  @javascript
+  Scenario: Editing quantity before adding to basket
+    When I navigate to a category with products
+      And I change the quantity to 100
+      And I click the 'Add to Basket' link
+      And I navigate to to my basket
+    Then I should see a product with a quantity of 100
 
-  # @javascirpt
-  # Scenario: Editing quantity in basket
-  #   When I navigate to my basket
-  #     And I edit the quantity for the first item in my basket to 10
-  #     And I click the "Update" link
-  #     And I navigate to to my basket
-  #   Then I should see the the quantity for the first item as 10
+  @javascript
+  Scenario: Editing quantity in basket
+    When I navigate to my basket
+      And I edit the quantity for the first item in my basket to 10
+      And I click the "Update" link
+      And I navigate to to my basket
+    Then I should see the the quantity for the first item as 10

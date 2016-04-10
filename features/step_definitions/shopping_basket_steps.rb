@@ -1,14 +1,6 @@
+
 When(/^I navigate to a product page$/) do
   visit product_path(id: Item.first)
-end
-
-Then(/^I should see the number change in the basket icon$/) do
-  new_basket_count = find("#basketCount").content.to_i
-  expect(new_basket_count).to be > @old_basket_count
-end
-
-Then(/^I should see a notification that indicates a product has been added$/) do
-  expect(page).to have_content "Item added to basket"
 end
 
 When(/^I navigate to my basket$/) do
@@ -16,16 +8,14 @@ When(/^I navigate to my basket$/) do
 end
 
 When(/^I click the 'Remove' link$/) do
-  within(".itemsContainer .item").first do
-    click_link "Remove"
-  end
+  # binding.pry
+  expect(page).to have_content "My Basket"
+  click_link "Remove"
 end
 
 When(/^I click the 'Add to Basket' link$/) do
-  within(".itemsContainer .item").first do
-    find(".addToBasket").click
-    @old_basket_count = find("#basketCount").content.to_i
-  end
+  @old_basket_count = BasketItem.count
+  find(".addToBasket").click
 end
 
 When(/^I click the "([^"]*)" link$/) do |link|
@@ -37,16 +27,25 @@ Then(/^I should no longer see that item in my basket$/) do
 end
 
 When(/^I change the quantity to (\d+)$/) do |quantity|
-  fill_in "productQuantityInput", with: quantity
+  find(".productQuantityInput").set(quantity)
 end
 
 When(/^I navigate to to my basket$/) do
   visit baskets_path
 end
 
+Then(/^I should see the number change in the basket icon$/) do
+  new_basket_count = BasketItem.count
+  expect(new_basket_count).to be > @old_basket_count
+end
+
+Then(/^I should see a notification that indicates a product has been added$/) do
+  expect(page).to have_content "Item added to basket"
+end
+
 Then(/^I should see a product with a quantity of (\d+)$/) do |quantity|
   within(".itemsContainer .item").first do
-    expect(page.css(".productQuantityInput")).to be "100"
+    expect(find(".productQuantityInput").value).to be quantity
   end
 end
 

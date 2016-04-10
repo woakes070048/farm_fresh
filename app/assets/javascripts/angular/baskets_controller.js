@@ -51,16 +51,21 @@ app.controller("BasketsCtrl", ["$scope", "BasketItem", "$http", function($scope,
 
         if(item_to_remove_index > -1) {
           $scope.basket_items.splice(item_to_remove_index, 1);
+          $scope.getBasketCount();
         }
 
       }
     });
   }
 
-  $scope.$on('$viewContentLoaded', function(){
-    $scope.getBasketItems();
-  });
+  // $scope.$on('$viewContentLoaded', function(){
+  //   $scope.getBasketItems();
+  // });
 
-  $scope.getBasketCount();
+  $scope.init = function () {
+    $scope.getBasketCount();
+  }
+
   $scope.getBasketItems();
+  $scope.init();
 }]);
