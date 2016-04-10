@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # get 'map/show'
 
   devise_for :farms#, :controllers => { registrations: 'farm_registrations' }
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :create, :show, :update, :destroy, :new, :edit]
   resources :baskets, only: [:index, :create, :destroy, :update]
   resources :charges, only: [:new, :create]
+  resources :orders, only: [:index, :create, :show]
 
   get "/baskets/count" => "baskets#count"
   get "/inventory" => "items#farm_index", as: :farm_items

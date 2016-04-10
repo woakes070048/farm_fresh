@@ -19,7 +19,8 @@ class ChargesController < ApplicationController
       :currency    => 'gbp'
     )
 
-    redirect_to restaurant_root_path, notice: "Payment successful, thanks for your order."
+    redirect_to orders_path(stripeToken: params[:stripeToken])
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
