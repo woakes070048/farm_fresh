@@ -10,17 +10,10 @@ var app = angular.module("Catalog", ["ngResource", "ngAnimate"])
   }])
 
   .factory("BasketItem", ["$resource", function($resource) {
-    return $resource("/baskets.json/:id")
+    return $resource("/baskets/:id.json")
   }]);
 
-app.config([
-  "$httpProvider", function($httpProvider) {
-    $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
-  }
-]);
+app.config(["$httpProvider", function($httpProvider) {
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+}]);
 
-
-
-  // .controller("ItemsCtrl", ["$scope", "Item", function($scope, Item) {
-
-  // }]);

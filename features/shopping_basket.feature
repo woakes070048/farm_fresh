@@ -6,19 +6,18 @@ Feature: Shopping Basket
   Background:
   Given I am logged in as a restaurant
 
-  @javascirpt
+  @javascript
   Scenario: Adding prodcut to the basket
     When I navigate to a category with products
-      And I fill in the first item's quantity with 10
       And I click the 'Add to Basket' link
     Then I should see the number change in the basket icon
       And I should see a notification that indicates a product has been added
 
-  # @javascirpt
-  # Scenario: Removing items from the basket
-  #   When I navigate to my basket
-  #     And I click the 'Remove' link
-  #   Then I should no longer see that item in my basket
+  @javascirpt
+  Scenario: Removing items from the basket
+    When I navigate to my basket
+      And I click the 'Remove' link
+    Then I should no longer see that item in my basket
 
   # @javascirpt
   # Scenario: Editing quantity before adding to basket

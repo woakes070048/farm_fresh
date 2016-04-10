@@ -2,7 +2,7 @@ class BasketsController < ApplicationController
   before_filter :authenticate_restaurant!
 
   def index
-    @basket_items = current_restaurant.basket_items
+    @basket_items = current_restaurant.basket_items.includes(:item)
   end
 
   def create
@@ -11,7 +11,7 @@ class BasketsController < ApplicationController
   end
 
   def destroy
-    basket_item = BasketItem.find(params[:id])
+    basket_item = current_restaurant.basket_items.find(params[:id])
     basket_item.destroy
     render json: basket_item
   end

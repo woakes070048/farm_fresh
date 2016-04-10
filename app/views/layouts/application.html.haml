@@ -18,7 +18,8 @@
         = link_to "Sign Out", destroy_restaurant_session_path, method: :delete
         %span{id: "basketNotify"} Item added to basket.
         #basketContainer{"ng-controller": "BasketsCtrl"}
-          = link_to image_tag("https://s3-eu-west-1.amazonaws.com/kpfarmfresh/basket.png", {id: "basket", width: 32, height: 32}), baskets_path
+          %a{href: baskets_url, "data-no-turbolink": true}
+            %img{src: "https://s3-eu-west-1.amazonaws.com/kpfarmfresh/basket.png", id: "basket", width: 32, height: 32}
           #basketCountContainer
             %span{id: "basketCount", "ng-model": "basket_count"}
       -else

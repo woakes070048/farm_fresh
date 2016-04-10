@@ -1,2 +1,15 @@
-%h1 Baskets#index
-%p Find me in app/views/baskets/index.html.haml
+%h1 My Basket
+
+.basketItemsContainer{"ng-controller": "BasketsCtrl"}
+  .item{"ng-repeat": "basket_item in basket_items"}
+    .itemName{"ng-bind": "basket_item.item.name"}
+    %label Quantity:
+    .itemQuantity{"ng-bind": "basket_item.quantity"}
+    %label: Price per unit:
+    .itemPrice{"ng-bind": "basket_item.item.price"}
+    %label Total:
+    .itemTotal{"ng-bind": "basket_item.total"}
+    %a{class: "removeLink", "ng-click": "removeFromBasket(basket_item.id)"} Remove
+
+
+

@@ -69,14 +69,14 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 # Capybara.default_wait_time = 10
 
 
-# Around('@poltergeist') do |scenario, block|
-#   @capy_def_driver = Capybara.default_driver
-#   @capy_js_driver = Capybara.javascript_driver
-#   # Just for this scenario, let's go Poltergeist
-#   Capybara.default_driver = :poltergeist
-#   Capybara.javascript_driver = :poltergeist
-#   block.call
-#     # Reset it back to the original
-#   Capybara.default_driver = @capy_def_driver # Usually :rack_test
-#   Capybara.javascript_driver = @capy_js_driver # Usually :selenium
-# end
+Around('@poltergeist') do |scenario, block|
+  @capy_def_driver = Capybara.default_driver
+  @capy_js_driver = Capybara.javascript_driver
+  # Just for this scenario, let's go Poltergeist
+  Capybara.default_driver = :poltergeist
+  Capybara.javascript_driver = :poltergeist
+  block.call
+    # Reset it back to the original
+  Capybara.default_driver = @capy_def_driver # Usually :rack_test
+  Capybara.javascript_driver = @capy_js_driver # Usually :selenium
+end

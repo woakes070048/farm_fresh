@@ -3,9 +3,8 @@ When(/^I navigate to a product page$/) do
 end
 
 Then(/^I should see the number change in the basket icon$/) do
-  within("nav .basket") do
-    expect(page.css("#count")).to eq "1"
-  end
+  new_basket_count = find("#basketCount").content.to_i
+  expect(new_basket_count).to be > @old_basket_count
 end
 
 Then(/^I should see a notification that indicates a product has been added$/) do
@@ -19,6 +18,13 @@ end
 When(/^I click the 'Remove' link$/) do
   within(".itemsContainer .item").first do
     click_link "Remove"
+  end
+end
+
+When(/^I click the 'Add to Basket' link$/) do
+  within(".itemsContainer .item").first do
+    find(".addToBasket").click
+    @old_basket_count = find("#basketCount").content.to_i
   end
 end
 
@@ -54,4 +60,10 @@ Then(/^I should see the the quantity for the first item as (\d+)$/) do |quantity
   within(".itemsContainer .item").first do
     fill_in "productQuantityInput", with: quantity
   end
+end
+
+When(/^I navigate to a category with products$/) do
+  expect(page).to have_content "Browse Products"
+  click_link "Meat"
+  click_link "Chicken"
 end
