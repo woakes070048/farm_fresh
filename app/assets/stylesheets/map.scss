@@ -3,10 +3,26 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .mapContainer {
-  width: 70%;
+  /*width: 70%;*/
+
 
   #map {
-    width: 95%;
+    width: 100%;
     height: 600px;
+  }
+}
+
+
+.farmsContainer {
+  aside{
+    display: inline-block;
+    width: 30%;
+  }
+
+  section {
+    display: inline-block;
+    width: 65%;
+    vertical-align: top;
+    border: 3px solid red;
   }
 }

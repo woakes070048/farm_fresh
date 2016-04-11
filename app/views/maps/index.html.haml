@@ -2,22 +2,24 @@
 %script{src:"//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"}
 %script{src:'//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js'}
 
-%h1 Farms Near Me
+= render "page_title", title_text: "Farms Near Me"
 
-#farmList
-  - @nearby_farms.each do |farm|
-    .farmListItem{id: "farm_#{farm.id}"}
-      .field
-        = farm.name
-      .field
-        Address:
-        = farm.full_address.gsub(",", " ")
-      .field
-        Distance(miles):
-        = farm.distance
+.farmsContainer
+  %aside
+    #farmList
+      - @nearby_farms.each do |farm|
+        .farmListItem{id: "farm_#{farm.id}", class: "card"}
+          .card-content
+            .card-title{class: "farmName"} #{farm.name}
+            .field
+              Address: #{farm.full_address.gsub(",", " ")}
+            .field
+              Distance(miles): #{farm.distance}
 
-.mapContainer
-  #map
+
+  %section
+    .mapContainer
+      #map
 
 :javascript
   initMap();
