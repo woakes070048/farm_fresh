@@ -27,3 +27,7 @@ function showItemAddedNotification() {
 $(function() {
   $(".notice").delay(3000).fadeOut('slow');
 });
+
+$(document).ready(function() {
+    $('.sortSelection').material_select();
+});

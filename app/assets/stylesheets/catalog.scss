@@ -1,0 +1,22 @@
+
+#productsContainer {
+  border: 1px solid red;
+
+  div {
+    border: 1px solid red;
+  }
+
+  aside {
+    display: inline-block;
+  }
+
+  section {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  #sortSelection {
+    border: 1px solid red;
+  }
+
+}

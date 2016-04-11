@@ -1,19 +1,20 @@
 %h1 My Orders
 
 #orderListContainer
-  - unless @orders.nil? @orders.each do |order|
-    .orderItem
-      %label: Order number:
-      .orderNumber #{order.id}
-      %label: Order date:
-      .orderDate #{order.created_at.strftime("%m/%d/%Y")}
-      %label: Status:
-      .orderStatus #{order.status.name}
-      %label: Delivery:
-      .orderDelivery #{order.delivery_option.name}
-      %label: Total (ex Vat):
-      .orderPrice £ #{order.calculate_total}
-  -else
+  - if @orders.nil?
     %span You have no orders
+  - else
+    -@orders.each do |order|
+      .orderItem
+        %label: Order number:
+        .orderNumber #{order.id}
+        %label: Order date:
+        .orderDate #{order.created_at.strftime("%m/%d/%Y")}
+        %label: Status:
+        .orderStatus #{order.status.name}
+        %label: Delivery:
+        .orderDelivery #{order.delivery_option.name}
+        %label: Total (ex Vat):
+        .orderPrice £ #{order.calculate_total}
 
 

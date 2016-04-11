@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.5.1'
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -24,6 +24,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'jquery-ui-rails'
 gem 'stripe'
+gem 'materialize-sass'
 
 group :production do
   gem 'rails_12factor'
@@ -40,6 +41,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'thin'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem "erb2haml"

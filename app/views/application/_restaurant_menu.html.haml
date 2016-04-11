@@ -1,0 +1,16 @@
+
+%ul{id: "nav-mobile", class: "right hide-on-small-and-down"}
+  %li #{link_to "Home", restaurant_root_path, {"data-no-turbolink": true}}
+  %li #{link_to "Profile", edit_restaurant_registration_path}
+  %li #{link_to "Orders", orders_path}
+  %li #{link_to "Sign Out", destroy_restaurant_session_path, method: :delete}
+  %li #{link_to "Farms near me", map_path, { "data-no-turbolink": true, class: "map_pathwaves-effect waves-light btn deep-orange darken-1"}}
+  %li{id: "basketItem"}
+    #basketContainer
+      %a{href: baskets_path, "data-no-turbolink": true}
+        %img{src: "https://s3-eu-west-1.amazonaws.com/kpfarmfresh/basket.png", id: "basket", width: 32, height: 32}
+
+    #basketCountContainer
+      %span{id: "basketCount"}
+
+%span{id: "basketNotify"} Item added to basket.

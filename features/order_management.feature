@@ -6,7 +6,6 @@ Feature: Managing Orders as a buyer
   Background:
     Given I am logged in as a restaurant
 
-  @javascript
   Scenario: Purchasing items in basket
     Given that I have successfully placed an order
     When I navigate to my orders page

@@ -9,25 +9,31 @@
   z-index: 50;
 }
 
-#basketContainer {
+#basketItem {
 
-  display: inline-block;
-  text-align: center;
 
-  #basket{
-    z-index: -1;
-  }
+  #basketContainer {
 
-  #basketCount {
-    position: absolute;
-    background: tomato;
-    width: 16px;
-    height: 16px;
-    border-radius: 100%;
-    top: 0px;
-    left: 0px;
-    color: white;
-    font-size: 12px;
+    display: inline-block;
+    text-align: center;
+
+
+/*    #basket{
+      z-index: -1;
+    }
+
+    #basketCount {
+      display: none;
+      position: absolute;
+      background: tomato;
+      width: 16px;
+      height: 16px;
+      border-radius: 100%;
+      top: 0px;
+      left: 0px;
+      color: white;
+      font-size: 12px;
+    }*/
   }
 }
 

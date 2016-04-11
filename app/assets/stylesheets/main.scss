@@ -1,0 +1,14 @@
+@import "materialize/components/color";
+
+$primary-color: color("teal", "lighten-2") !default;
+$secondary-color: color("teal", "lighten-1") !default;
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+$link-color: color("light-blue", "darken-1") !default;
+$text-color: white;
+
+@import 'materialize';
+@import 'navbar';
+@import 'baskets';
+@import 'map';
+@import 'catalog';

@@ -14,12 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery-ui
+//= require materialize-sprockets
 //= require angular
 //= require angular-resource
 //= require angular-animate
 //= require angular-mocks
 //= require cocoon
 //= require gmaps/google
+//= require map
 //= require underscore
 //= require angular/catalog_app
 //= require angular/categories_controller
