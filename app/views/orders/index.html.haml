@@ -1,20 +1,37 @@
-%h1 My Orders
+.row
+  .section
+    %h2 My Orders
+  .divider
 
-#orderListContainer
-  - if @orders.nil?
-    %span You have no orders
-  - else
-    -@orders.each do |order|
-      .orderItem
-        %label: Order number:
-        .orderNumber #{order.id}
-        %label: Order date:
-        .orderDate #{order.created_at.strftime("%m/%d/%Y")}
-        %label: Status:
-        .orderStatus #{order.status.name}
-        %label: Delivery:
-        .orderDelivery #{order.delivery_option.name}
-        %label: Total (ex Vat):
-        .orderPrice £ #{order.calculate_total}
+.row
+  #orderListContainer{class: "col s10 offset-s1"}
+    - if @orders.nil?
+      .section
+        %h4 You have no orders
+    - else
+      -@orders.each do |order|
+        .card{class: "orderItem teal lighten-5"}
+          .card-content{class: "black-text"}
+            .card-title{class: "orderTitle orderNumber"}
+              %span Order number:
+              %span #{order.id}
+            .orderDetails
+              .orderDate
+                %label Order date:
+                %span #{order.created_at.strftime("%m/%d/%Y")}
+              .orderStatus
+                %label Status:
+                %span #{order.status.name}
+              .orderDelivery
+                %label Delivery:
+                %span #{order.delivery_option.name}
+              .orderPrice
+                %label Total (ex Vat):
+                %span £ #{order.calculate_total}
+            .card-action{class: "row"}
+              %a{class: "waves-effect waves-light btn col s3 offset-s8"}
+                %i{class: "material-icons left"} reorder
+                View Details
+
 
 
