@@ -18,7 +18,7 @@
             .orderDetails
               .orderDate
                 %label Order date:
-                %span #{order.created_at.strftime("%m/%d/%Y")}
+                %span #{order.created_at.strftime("%d/%m/%Y")}
               .orderStatus
                 %label Status:
                 %span #{order.status.name}
