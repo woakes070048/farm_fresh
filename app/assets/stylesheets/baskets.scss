@@ -17,24 +17,12 @@
     display: inline-block;
     text-align: center;
 
-
-/*    #basket{
-      z-index: -1;
-    }
-
-    #basketCount {
-      display: none;
-      position: absolute;
-      background: tomato;
-      width: 16px;
-      height: 16px;
-      border-radius: 100%;
-      top: 0px;
-      left: 0px;
-      color: white;
-      font-size: 12px;
-    }*/
   }
+}
+
+#basketCount {
+  border-radius: 10%;
+  background-color: $basket-count-color;
 }
 
 .basketItemsContainer {

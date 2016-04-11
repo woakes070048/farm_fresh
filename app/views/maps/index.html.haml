@@ -10,7 +10,7 @@
       - @nearby_farms.each do |farm|
         .farmListItem{id: "farm_#{farm.id}", class: "card"}
           .card-content
-            .card-title{class: "farmName"} #{farm.name}
+            .card-title{class: "farmName teal-text"} #{farm.name}
             .field
               Address: #{farm.full_address.gsub(",", " ")}
             .field

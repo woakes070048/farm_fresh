@@ -8,6 +8,7 @@ $link-color: color("light-blue", "darken-1") !default;
 $text-color: white;
 $accent-color: white;
 $background-color: color("teal", "lighten-5");
+$basket-count-color: color("red", "lighten-3");
 
 @import 'materialize';
 @import 'navbar';
@@ -15,6 +16,7 @@ $background-color: color("teal", "lighten-5");
 @import 'map';
 @import 'catalog';
 @import 'orders';
+@import 'users';
 
 
 .ff-container {

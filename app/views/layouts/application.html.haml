@@ -15,7 +15,6 @@
     %nav
       .nav-wrapper
         %a{class: "brand-logo", href: "/", "data-no-turbolink": true} Farm Fresh
-        /=  %img{src: "https://s3-eu-west-1.amazonaws.com/kpfarmfresh/logo.png", height: "48px", width: "32px"}
         -if farm_signed_in?
           = render "farm_menu"
         -elsif restaurant_signed_in?
