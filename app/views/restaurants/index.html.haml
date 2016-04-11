@@ -2,7 +2,7 @@
 = render "page_title", title_text: "Products"
 
 
-%div{id: "productsContainer", "ng-controller": "CategoriesCtrl"}
+%div{id: "productsContainer", "ng-controller": "CategoriesCtrl", class: "teal lighten-5"}
 
   %aside
 
@@ -32,8 +32,8 @@
               %span{class: "card-title", "ng-bind": "item.name"}
               .itemDescription{"ng-bind": "item.description"}
               .itemPrice
-                %span Price per unit, £
-                %span{"ng-bind": "item.price"}
+                %span Price per unit
+                %span{"ng-bind-template": "£ {{item.price}}"}
               .itemQty
                 %span Stock:
                 %span{"ng-bind": "item.quantity"}
