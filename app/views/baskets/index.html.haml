@@ -1,7 +1,5 @@
-.row
-  .section
-    %h2 My Basket
-  .divider
+
+= render "page_title", title_text: "My Basket"
 
 - if current_restaurant.basket_items.count > 0
 
