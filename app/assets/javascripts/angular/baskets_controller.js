@@ -21,7 +21,6 @@ app.controller("BasketsCtrl", ["$scope", "BasketItem", "$http", function($scope,
   $scope.getBasketCount = function() {
     $http.get("/baskets/count")
       .then(function(response) {
-        console.log(response)
         $scope.basket_count = response.data.count;
         $scope.totalExVat = response.data.totalExVat;
         $scope.vat = response.data.vat;

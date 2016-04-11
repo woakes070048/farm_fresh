@@ -1,35 +1,46 @@
-%h1 Restaurant Home Page
+
+.row
+  %h2{class: "col s12 center-align"} Find Produce
 
 =# link_to "Farms near me", map_path
 
 %div{id: "productsContainer", "ng-controller": "CategoriesCtrl"}
 
   %aside
-    %h4 Browse Products
+    .row
+      %h5{class: "col s12 center-align"} Browse Products
 
     = link_to "Back", "#", id: "backLink", "ng-click": "getCategories()", "ng-show": "!atTopLevel"
 
-    %ul
-      %li{"ng-repeat": "category in categories"}
-        = link_to "{{category.name}}", "#", class: "categoryLink", "ng-click": "getCategories(category.id, category)"
+    .collection
+      = link_to "{{category.name}}", "#!", class: "categoryLink collection-item", "ng-click": "getCategories(category.id, category)", "ng-repeat": "category in categories"
+
 
   %section
-    %h2 Products
+    .row
+      %h3{class: "col s10 offset-s1"} Products
 
-    #selectionForm
-      = label_tag "Sort By: "
-      %select{id: "sortSelection", "ng-model": "selectedSort", "ng-options": "sortItem for sortItem in sortList", "ng-change": "setSortOption()"}
+    .row
+      #selectionForm{class: "col s3 push-s8"}
+        = label_tag "Sort By: "
+        %select{id: "sortSelection", class: "browser-default", "ng-model": "selectedSort", "ng-options": "sortItem for sortItem in sortList", "ng-change": "setSortOption()"}
 
     .itemsContainer
-      %div{class: "item", "ng-animate": "'animate'", "ng-repeat": "item in items"}
-        .itemName{"ng-bind": "item.name"}
-        .itemDescription{"ng-bind": "item.description"}
-        .itemPrice{"ng-bind": "item.price"}
-        .itemQty{"ng-bind": "item.quantity"}
-        %span Quantity:
-        %input{class: "productQuantityInput", type: "number", min:"0", step: "1", "ng-model": "item_quantity", "ng-init": "item_quantity=1"}
-        %a{"ng-controller": "BasketsCtrl", "ng-click": "addToBasket(item.id)", class: "addToBasket", href: "#"}
-          %img{src: "https://s3-eu-west-1.amazonaws.com/kpfarmfresh/add_to_basket.png", class:"basketIcon"}
+      .row
+        %div{class: "cols s12", "ng-repeat": "item in items"}
+          %div{class: "card"}
+            .card-content
+              %span{class: "card-title", "ng-bind": "item.name"}
+              .itemDescription{"ng-bind": "item.description"}
+              .itemPrice{"ng-bind": "item.price"}
+              .itemQty{"ng-bind": "£ + item.quantity"}
+            .card-action
+              .row
+                %div{class: "col s8 offset-s4"}
+                  %span Quantity:
+                  %input{class: "productQuantityInput col s6", type: "number", min:"0", step: "1", "ng-model": "item_quantity", "ng-init": "item_quantity=1"}
+                  %a{"ng-controller": "BasketsCtrl", "ng-click": "addToBasket(item.id)", class: "addToBasket", href: "#"}
+                    %img{src: "https://s3-eu-west-1.amazonaws.com/kpfarmfresh/add_to_basket.png", class:"basketIcon"}
 
 
 

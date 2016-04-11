@@ -20,6 +20,7 @@
 
       var categories = Category.query({parent_id: parent_id}, function () {
         $scope.categories = categories;
+        console.log($scope.categories);
       });
     };
 
