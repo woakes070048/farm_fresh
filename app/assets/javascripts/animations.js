@@ -19,9 +19,9 @@ function showItemAddedNotification() {
   var pos = $("#basket").offset();
   var basketNotify = $("#basketNotify")
   basketNotify.offset({top: pos.top, left: pos.left});
-  basketNotify.fadeIn(300, function() {
-    $(this).delay(3000).fadeOut(300);
-  });
+  // basketNotify.fadeIn(300, function() {
+  //   $(this).delay(3000).fadeOut(300);
+  // });
 }
 
 $(function() {
