@@ -3,7 +3,7 @@ CarrierWave.configure do |config|
     provider: "AWS",
     aws_access_key_id: ENV["aws_access_key"],
     aws_secret_access_key: ENV["aws_secret_access_key"],
-    region: "eu-west-1"
+    region: ENV["s3_region"]
   }
-  config.fog_directory = "kpfarmfresh"
+  config.fog_directory = ENV["s3_bucket_name"]
 end
