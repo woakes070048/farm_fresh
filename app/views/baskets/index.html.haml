@@ -4,37 +4,41 @@
   .divider
 
 - if current_restaurant.basket_items.count > 0
+
   .basketItemsContainer{"ng-controller": "BasketsCtrl"}
-    %table{class: "striped responsive-table"}
-      %thead
-        %tr
-          %th{class: "itemName"} Item
-          %th{class: "itemQuantity"} Quantity
-          %th{class: "itemPrice"} Price
-          %th{class: "itemTotal"} Total
-        %tbody
-          %tr{"ng-repeat": "basket_item in basket_items"}
-            %td{"ng-bind": "basket_item.item.name"}
-            %td{"ng-bind": "basket_item.quantity"}
-            %td{"ng-bind-template": "£ {{basket_item.item.price}}"}
-            %td{"ng-bind": "basket_item.total"}
-            %td
-              %a{class: "removeLink", "ng-click": "removeFromBasket(basket_item.id)"} Remove
+    .basketTable
+      %table{class: "striped responsive-table"}
+        %thead
+          %tr
+            %th{class: "itemName"} Item
+            %th{class: "itemQuantity"} Quantity
+            %th{class: "itemPrice"} Price
+            %th{class: "itemTotal"} Total
+          %tbody
+            %tr{"ng-repeat": "basket_item in basket_items"}
+              %td{"ng-bind": "basket_item.item.name"}
+              %td{"ng-bind": "basket_item.quantity"}
+              %td{"ng-bind-template": "£ {{basket_item.item.price}}"}
+              %td{"ng-bind": "basket_item.total"}
+              %td
+                %a{class: "removeLink waves-effect waves-light btn red", "ng-click": "removeFromBasket(basket_item.id)"} Remove
+
+    .row
+      .total{class: "subTotals col s4 offset-s8"}
+        .labels
+          .totalExLabel Total (ex Vat)
+          .vatLabel VAT
+          .totalIncLabel (inc Vat)
+        .totals
+          .totalExLabel
+            %span{class: "totalVal", id: "totalExVat", "ng-bind-template": "£ {{totalExVat}}"}
+          .vatLabel
+            %span{class: "totalVal", id: "vat", "ng-bind-template": "{{vat}}%"}
+          .totalIncLabel
+            %span{class: "totalVal", id: "totalIncVat", "ng-bind-template": "£ {{totalIncVat}}"}
 
   .row
-    .total{class: "subTotals col s6 offset-s3"}
-      .exVat{class: "right-align"}
-        %span Total (ex Vat)
-        %span{class: "totalVal", id: "totalExVat", "ng-bind-template": "£ {{totalExVat}}"}
-      .vat{class: "right-align"}
-        %span VAT(20%)
-        %span{class: "totalVal", id: "vat", "ng-bind-template": "£ {{vat}}"}
-      .total{class: "right-align"}
-        %span Total (inc Vat)
-        %span{class: "totalVal", id: "totalIncVat", "ng-bind-template": "£ {{totalIncVat}}"}
-
-  .row
-    .payButton{class: "col s2 push-s10"}
+    .payButton{class: "col s3 push-s10"}
       = form_tag charges_path do
         %article
           - if flash[:error].present?
@@ -42,6 +46,8 @@
               %p= flash[:error]
         %script.stripe-button{"data-amount" => "#{@amount}", "data-description" => "Farm Fresh Order", "data-key" => Rails.configuration.stripe[:publishable_key], "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js", "data-image" => "https://s3-eu-west-1.amazonaws.com/kpfarmfresh/logo.png", "data-currency" => "gbp", "data-email" => "#{current_restaurant.email}"}
 -else
-  %span Your basket is empty
+  .row
+    .section
+      %h4 Your basket is empty
 
 
