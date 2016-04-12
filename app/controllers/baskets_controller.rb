@@ -29,7 +29,6 @@ class BasketsController < ApplicationController
   end
 
   def basket_item_params
-    json_params = ActionController::Parameters.new(JSON.parse(request.body.read))
-    json_params.require(:basket_item).permit(:item_id, :quantity)
+    params.require(:basket_item).permit(:item_id, :quantity)
   end
 end

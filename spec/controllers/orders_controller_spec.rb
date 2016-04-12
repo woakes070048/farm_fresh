@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe OrdersController, type: :controller do
 
+  before do
+    create_helper_objects
+    allow(controller).to receive(:current_restaurant).and_return(@restaurant1)
+    @restaurant1.basket_items.create(item: @eggs, quantity: 200)
+  end
+
   describe "GET #index" do
     it "returns http success" do
       get :index
@@ -17,13 +23,6 @@ RSpec.describe OrdersController, type: :controller do
   end
 
   describe "GET #show" do
-
-    before do
-      create_helper_objects
-      allow(controller).to receive(:current_restaurant).and_return(@restaurant1)
-
-      @restaurant1.basket_items.create(item: @eggs, quantity: 200)
-    end
 
     it "should create a new order" do
       previous_count = Order.count

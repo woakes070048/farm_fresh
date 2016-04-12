@@ -23,13 +23,13 @@ describe BasketsController, type: :controller do
       test_data = BasketItem.new(item_id: @eggs.id, quantity: 20)
       previous_count = BasketItem.count
 
-      post :create, {format: :json, basket_item: test_data.to_json}
+      post :create, {format: :json, basket_item: test_data.as_json}
       response_data = JSON.parse(response.body)
 
       expect(BasketItem.count).to eq previous_count + 1
       expect(response_data).to have_key "item_id"
       expect(response_data).to have_key "quantity"
-      expect(response_data).to have_value 10
+      expect(response_data).to have_value 20
     end
   end
 
@@ -57,7 +57,7 @@ describe BasketsController, type: :controller do
       current_count = BasketItem.count
       get :count
       data = JSON.parse(response.body)
-      expect(data.count).to be current_count
+      expect(data["count"]).to be current_count
     end
   end
 end

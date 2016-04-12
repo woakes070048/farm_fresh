@@ -31,7 +31,6 @@ class ItemsController < ApplicationController
     if @item.valid?
       redirect_to farm_items_path, notice: "Item created"
     else
-      binding.pry
       redirect_to farm_items_path, notice: "Could not create item"
     end
 
