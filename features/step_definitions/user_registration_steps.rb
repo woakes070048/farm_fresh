@@ -35,27 +35,20 @@ Then(/^I should be taken to the farm dashboard$/) do
   expect(page).to have_content "Farm Dashboard"
 end
 
-When(/^I navigate to the home page$/) do
-  visit "/"
+When(/^I navigate to the farm sign up page$/) do
+  visit new_farm_registration_path
 end
 
-When(/^I click "([^"]*)" button$/) do |arg1|
-  pending
+When(/^I follow "([^"]*)"$/) do |link|
+  click_link link
 end
 
-When(/^I am redirected to the twitter sign up page$/) do
-  pending
+Then(/^I should see "([^"]*)"$/) do |message|
+  expect(page).to have_content message
 end
 
-When(/^I click the "([^"]*)" button$/) do |arg1|
-  pending
-end
-
-Then(/^I should be taken to the restaurant home page$/) do
-  pending
-end
-
-Then(/^I should be taken to the Farm dashboard$/) do
-  pending
+Then(/^I should be taken to my home page$/) do
+  expect(page).to have_content "Farm Fresh"
+  expect(current_path).to eq "/"
 end
 

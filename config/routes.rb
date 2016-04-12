@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   # get 'map/show'
 
-  devise_for :farms#, :controllers => { registrations: 'farm_registrations' }
-  devise_for :restaurants#, :controllers => { registrations: 'restaurant_registrations' }
+  devise_for :farms, controllers: { omniauth_callbacks: "farm_callbacks" }
+  devise_for :restaurants
 
 
   authenticated :farm do

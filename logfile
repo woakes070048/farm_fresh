@@ -3,3 +3,15 @@ LOG:  MultiXact member wraparound protections are now enabled
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
 LOG:  unexpected EOF on client connection with an open transaction
+ERROR:  null value in column "email" violates not-null constraint
+DETAIL:  Failing row contains (873, null, $2a$10$1xpZuHfcsU3aVvTUVBCkOeSqDYQtccz.9e.BtsxzUO.zt4kl3gfN2, null, null, null, 1, 2016-04-12 16:55:15.440869, 2016-04-12 16:55:15.440869, ::1, ::1, 2016-04-12 16:55:15.442035, 2016-04-12 16:55:15.442035, null, Farm, null, null, null, null, null, null, null, twitter, 14065994).
+STATEMENT:  INSERT INTO "users" ("type", "provider", "uid", "email", "encrypted_password", "last_sign_in_at", "current_sign_in_at", "last_sign_in_ip", "current_sign_in_ip", "sign_in_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"
+ERROR:  null value in column "email" violates not-null constraint
+DETAIL:  Failing row contains (874, null, $2a$10$K99clUhQOPza5PLMnjiZRuYn4sit5gK7lfK9ErSuGD29C0t//O05O, null, null, null, 1, 2016-04-12 17:01:13.3285, 2016-04-12 17:01:13.3285, ::1, ::1, 2016-04-12 17:01:13.329529, 2016-04-12 17:01:13.329529, null, Farm, null, null, null, null, null, null, null, twitter, 14065994).
+STATEMENT:  INSERT INTO "users" ("type", "provider", "uid", "email", "encrypted_password", "last_sign_in_at", "current_sign_in_at", "last_sign_in_ip", "current_sign_in_ip", "sign_in_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"
+ERROR:  null value in column "email" violates not-null constraint
+DETAIL:  Failing row contains (875, null, $2a$10$lPaym2FHntKtdmXS5PP8Mu4tiguchhB5W03kVJJzM3z14PG6jSu1a, null, null, null, 1, 2016-04-12 17:12:16.841756, 2016-04-12 17:12:16.841756, ::1, ::1, 2016-04-12 17:12:16.843429, 2016-04-12 17:12:16.843429, null, Farm, null, null, null, null, null, null, null, twitter, 14065994).
+STATEMENT:  INSERT INTO "users" ("type", "provider", "uid", "email", "encrypted_password", "last_sign_in_at", "current_sign_in_at", "last_sign_in_ip", "current_sign_in_ip", "sign_in_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"
+ERROR:  null value in column "email" violates not-null constraint
+DETAIL:  Failing row contains (876, null, $2a$10$IOR7HpXBBMBQI9E0NVhsXO8fZ9e4bjkasesN.SkDZ/IYK4UIcm4dK, null, null, null, 1, 2016-04-12 17:14:09.210054, 2016-04-12 17:14:09.210054, ::1, ::1, 2016-04-12 17:14:09.211924, 2016-04-12 17:14:09.211924, null, Farm, null, null, null, null, null, null, null, twitter, 14065994).
+STATEMENT:  INSERT INTO "users" ("type", "provider", "uid", "email", "encrypted_password", "last_sign_in_at", "current_sign_in_at", "last_sign_in_ip", "current_sign_in_ip", "sign_in_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"
