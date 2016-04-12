@@ -1,1 +1,20 @@
-%h1 Landing Page
+#landing-background
+
+.row
+  .promo-box{class: "col s10 offset-s1 white-text"}
+    %h1 Farm Fresh
+    %h4 Connecting restaurants with their local farmers.
+
+.row
+  .promo-container{class: "col s10 offset-s1"}
+    .row
+      %div{class: "promo col s4"}
+        %img{src: "https://s3-eu-west-1.amazonaws.com/kpfarmfresh/promo_farm.png"}
+        %h5 Find customers for your produce
+        = link_to "Register Farm", new_farm_registration_path, class: "waves-effect waves-light btn-large light-blue darken-3"
+      %div{class: "promo col s4 offset-s4"}
+        %img{src: "https://s3-eu-west-1.amazonaws.com/kpfarmfresh/promo_restaurant.png"}
+        %h5 Find the freshest, local ingredients
+        = link_to "Register Restaurant", new_restaurant_registration_path, class: "waves-effect waves-light btn-large red accent-2"
+
+
