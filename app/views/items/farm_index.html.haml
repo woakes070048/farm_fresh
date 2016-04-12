@@ -1,20 +1,25 @@
-%h1  My Items
 
-%a{href: new_item_path} Add an Item
+= render "page_title", title_text: "My Items"
+
+.row
+  %a{href: new_item_path, class: "waves-effect waves-light btn blue darken-2 col s3 offset-s9"}
+    %i{class: "material-icons left"} library_add
+    Add an Item
 
 .inventoryContainer
   - @items.each do |item|
-    .item{id: "item_#{item.id}"}
-      .itemName
-        = item.name
-      .itemPrice
-        = item.price
-        each
-      .itemQuantity
-        Quantity:
-        = item.quantity
-      .itemDistance
-        / TODO: Populate after geocoder setup
-      = link_to "Edit", edit_item_path(id: item.id), class: "editItemButton"
-      = link_to "Delete", "/items/#{item.id}", method: :delete, class: "deleteItemButton"
+    .card{class: "teal lighten-5"}
+      .item{id: "item_#{item.id}", class: "card-content"}
+        .itemName{class: "card-title"}
+          = item.name
+        .itemPrice £#{item.price} each
+        .itemQuantity Quantity: #{item.quantity}
+        .card-action
+          %a{href: "#{edit_item_path(id: item.id)}", class: "editItemButton waves-effect waves-light btn"}
+            %i{class: "material-icons left"} mode_edit
+            Edit
+          %a{href: "/items/#{item.id}", class: "deleteItemButton waves-effect waves-light btn red", method: :delete}
+            %i{class: "material-icons left"} delete
+            Delete
+
 
