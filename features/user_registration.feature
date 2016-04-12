@@ -16,11 +16,10 @@ Feature: User Registration
   #     And I fill in the "farm" form correctly
   #   Then I should be taken to the farm dashboard
 
-
+  @javascript
   Scenario: Farm Signing up with twitter
     When I navigate to the farm sign up page
       And I follow "Sign in with Twitter"
-    Then Then I should see "Successfully authorized from Twitter account"
     Then I should be taken to my home page
 
   # Scenario: Restaurant Signing up with twitter

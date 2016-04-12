@@ -40,11 +40,10 @@ When(/^I navigate to the farm sign up page$/) do
 end
 
 When(/^I follow "([^"]*)"$/) do |link|
-  click_link link
-end
-
-Then(/^I should see "([^"]*)"$/) do |message|
-  expect(page).to have_content message
+  visit "/farms/auth/twitter"
+  fill_in "username_or_email", with: "farm_user"
+  fill_in "password", with: "a12345678"
+  click_button "Sign In"
 end
 
 Then(/^I should be taken to my home page$/) do
