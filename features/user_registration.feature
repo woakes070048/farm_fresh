@@ -6,15 +6,15 @@ Feature: User Registration
   Background:
     Given I am not signed in
 
-  # Scenario: Restaurant Signing up
-  #   When I navigate to the Restaurant signup page
-  #     And I fill in the "restaurant" form correctly
-  #   Then I should be taken to the restaurants home page
+  Scenario: Restaurant Signing up
+    When I navigate to the Restaurant signup page
+      And I fill in the "restaurant" form correctly
+    Then I should be taken to the restaurants home page
 
-  # Scenario: Farm Signing up
-  #   When I navigate to the Farm signup page
-  #     And I fill in the "farm" form correctly
-  #   Then I should be taken to the farm dashboard
+  Scenario: Farm Signing up
+    When I navigate to the Farm signup page
+      And I fill in the "farm" form correctly
+    Then I should be taken to the farm dashboard
 
   @javascript
   Scenario: Farm Signing up with twitter

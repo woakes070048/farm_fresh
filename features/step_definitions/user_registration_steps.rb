@@ -41,8 +41,8 @@ end
 
 When(/^I follow "([^"]*)"$/) do |link|
   visit "/farms/auth/twitter"
-  fill_in "username_or_email", with: "farm_user"
-  fill_in "password", with: "a12345678"
+  fill_in "username_or_email", with: ENV["twitter_test_user"]
+  fill_in "password", with: ENV["twitter_test_password"]
   click_button "Sign In"
 end
 

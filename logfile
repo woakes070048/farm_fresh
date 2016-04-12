@@ -15,3 +15,9 @@ STATEMENT:  INSERT INTO "users" ("type", "provider", "uid", "email", "encrypted_
 ERROR:  null value in column "email" violates not-null constraint
 DETAIL:  Failing row contains (876, null, $2a$10$IOR7HpXBBMBQI9E0NVhsXO8fZ9e4bjkasesN.SkDZ/IYK4UIcm4dK, null, null, null, 1, 2016-04-12 17:14:09.210054, 2016-04-12 17:14:09.210054, ::1, ::1, 2016-04-12 17:14:09.211924, 2016-04-12 17:14:09.211924, null, Farm, null, null, null, null, null, null, null, twitter, 14065994).
 STATEMENT:  INSERT INTO "users" ("type", "provider", "uid", "email", "encrypted_password", "last_sign_in_at", "current_sign_in_at", "last_sign_in_ip", "current_sign_in_ip", "sign_in_count", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"
+ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+DETAIL:  Key (email)=() already exists.
+STATEMENT:  INSERT INTO "users" ("type", "provider", "uid", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"
+ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+DETAIL:  Key (email)=() already exists.
+STATEMENT:  INSERT INTO "users" ("type", "provider", "uid", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"

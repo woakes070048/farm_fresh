@@ -78,3 +78,33 @@ end
 Then(/^I should not be able to save$/) do
   expect(current_path).to eq new_item_path
 end
+
+Given(/^that I am signed in with twitter$/) do
+  visit root_path
+  click_link "Sign Out" if page.has_content? "Sign Out"
+  visit "/farms/auth/twitter"
+  fill_in "username_or_email", with: ENV["twitter_test_user"]
+  fill_in "password", with: ENV["twitter_test_password"]
+  click_button "Sign In"
+end
+
+Given(/^I enabled posting activity to twitter in my dashboard$/) do
+
+end
+
+When(/^I add a new product$/) do
+  expect(page).to have_content "Farm Fresh"
+  visit new_item_path
+  expect(page).to have_content "Add a New Item"
+  fill_in "item_name", with: "White loaf"
+  fill_in "item_price", with: "0.67"
+  fill_in "item_quantity", with: "10"
+  click_button "Create Item"
+end
+
+Then(/^my twitter feed should have a new post with the details of the new product$/) do
+  visit "https://twitter.com/farm_user"
+  expect(page).to have_content "@farm_user"
+  sleep(5);
+  expect(page).to have_content "10 White loaf at £0.67 each, http://bit.ly/1UZlvPK"
+end
