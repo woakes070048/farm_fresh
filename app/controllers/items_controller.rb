@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
     if @item.valid?
       redirect_to farm_items_path, notice: "Item created"
     else
+      binding.pry
       redirect_to farm_items_path, notice: "Could not create item"
     end
 
@@ -77,7 +78,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :quantity, :price, :farm_id, :category_id, :description,
-      images_attributes: [:id, :image, :_destroy])
+      images_attributes: [:id, :image, :item, :_destroy])
   end
 
   def get_categories_list

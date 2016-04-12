@@ -5,8 +5,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :password_confirmation
-
   mount_uploader :logo, LogoImageUploader
 
   geocoded_by :full_address

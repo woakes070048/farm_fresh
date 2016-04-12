@@ -41,7 +41,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'thin'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem "erb2haml"
