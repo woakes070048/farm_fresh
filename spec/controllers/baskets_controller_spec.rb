@@ -19,7 +19,6 @@ describe BasketsController, type: :controller do
   describe "Adding to basket" do
 
     it "should add a new basket item to the current_restaurant's basket" do
-      # test_data = {"basket_item"=>{"item_id"=>@eggs.id, "quantity"=>2}}
       test_data = BasketItem.new(item_id: @eggs.id, quantity: 20)
       previous_count = BasketItem.count
 

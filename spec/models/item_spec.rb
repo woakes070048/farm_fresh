@@ -14,36 +14,37 @@ describe Item, type: :model do
                            quantity: 500,
                            category: @category,
                            farm:     @farm)
+
   end
 
   describe "Adding an item" do
 
+    before do
+      @invalid_item = @valid_item.dup
+    end
+
     it "should have a name" do
-      invalid_item = @valid_item.dup
-      invalid_item.name = nil
-      expect(invalid_item).to_not be_valid
+      @invalid_item.name = nil
+      expect(@invalid_item).to_not be_valid
 
       expect(@valid_item).to be_valid
     end
 
     it "should have a price greater than 0" do
-      invalid_item = @valid_item.dup
-      invalid_item.price = -24.33
-      expect(invalid_item).to_not be_valid
+      @invalid_item.price = -24.33
+      expect(@invalid_item).to_not be_valid
 
       expect(@valid_item).to be_valid
     end
 
     it "should belong to a category" do
-      invalid_item = @valid_item.dup
-      invalid_item.category = nil
-      expect(invalid_item).to_not be_valid
+      @invalid_item.category = nil
+      expect(@invalid_item).to_not be_valid
     end
 
     it "should belong to a farm" do
-      invalid_item = @valid_item.dup
-      invalid_item.farm = nil
-      expect(invalid_item).to_not be_valid
+      @invalid_item.farm = nil
+      expect(@invalid_item).to_not be_valid
 
       expect(@valid_item).to be_valid
     end
@@ -109,18 +110,5 @@ describe Item, type: :model do
     end
 
   end
-
-  describe "Finding images" do
-
-    before do
-
-    end
-
-    it "should be able to find all of its images" do
-
-    end
-
-  end
-
 
 end
