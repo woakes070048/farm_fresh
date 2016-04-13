@@ -54,6 +54,34 @@ def create_order
   restaurant.basket_items.destroy_all
 end
 
+def create_multiple_orders
+  DeliveryOption.create(name: "1st Class", price: 2.99)
+  Status.destroy_all
+  @in_progress_status = Status.create(name: "In Progress")
+  restaurant = Restaurant.find_by(email: "rest@1.com")
+
+  restaurant.basket_items.create(item: Item.first, quantity: 20)
+  restaurant.basket_items.create(item: Item.last, quantity: 30)
+
+  order1 = restaurant.orders.create(vat: 20, delivery_option: DeliveryOption.first)
+  restaurant.basket_items.each do |basket_item|
+    order1.line_items.build(item_id: basket_item.item_id, quantity: basket_item.quantity)
+  end
+  order1.save
+
+
+  restaurant.basket_items.create(item: Item.first, quantity: 10)
+  restaurant.basket_items.create(item: Item.last, quantity: 10)
+
+  order2 = restaurant.orders.create(vat: 20, delivery_option: DeliveryOption.first)
+  restaurant.basket_items.each do |basket_item|
+    order2.line_items.build(item_id: basket_item.item_id, quantity: basket_item.quantity)
+  end
+  order2.created_at = Date.yesterday
+  order2.save
+
+end
+
 def load_all_test_data
   load_users
   load_categories
