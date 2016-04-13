@@ -11,14 +11,15 @@ $background-color: color("teal", "lighten-5");
 $basket-count-color: color("red", "lighten-3");
 
 @import 'materialize';
-@import 'navbar';
-@import 'baskets';
-@import 'map';
-@import 'catalog';
-@import 'orders';
-@import 'users';
-@import 'landing';
+@import 'custom/baskets';
+@import 'custom/map';
+@import 'custom/catalog';
+@import 'custom/orders';
+@import 'custom/users';
+@import 'custom/landing';
 
+
+/****** GLOBAL STYLES ********/
 
 .ff-container {
   margin: 20px auto;
