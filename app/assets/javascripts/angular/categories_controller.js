@@ -11,16 +11,17 @@
       if (parent_id == null) {
         $scope.atTopLevel = true
         $scope.currentCategory = null;
+
       }
       else {
         $scope.atTopLevel = false;
         $scope.currentCategory = parent_id;
+        $scope.currentCategoryTitle = parent.name;
         $rootScope.currentCategory = parent;
       }
 
       var categories = Category.query({parent_id: parent_id}, function () {
         $scope.categories = categories;
-        console.log($scope.categories);
       });
     };
 

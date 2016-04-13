@@ -18,12 +18,20 @@
 
   %section
     .row
+      %h4{class: "teal-text col s4 offset-s1", "ng-bind": "currentCategoryTitle"}
+    .row
+      %h5{class: "teal-text col s10 offset-s1", "ng-show": "items.length == 0"}
+        There are currently no items in this category.
+
+
+    .row
       #selectionForm{class: "col s3 push-s8", "ng-show": "items.length > 0"}
         = label_tag "Sort By: "
         %select{id: "sortSelection", class: "browser-default", "ng-model": "selectedSort", "ng-options": "sortItem for sortItem in sortList", "ng-change": "setSortOption()"}
 
     .row
       .itemsContainer{class: "col s10 offset-s1"}
+        %h5{class: "teal-text", "ng-show": "atTopLevel"} Please browse from the categories on the left to see what's available
         %div{"ng-repeat": "item in items"}
           .card
             .product-image
