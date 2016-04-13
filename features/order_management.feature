@@ -11,6 +11,11 @@ Feature: Managing Orders as a buyer
     When I navigate to my orders page
     Then I should see the order in my order history at the top
 
+  Scenario: Checking order status in order history
+    Given I have previously placed an order
+    When I navigate to my order history page
+    Then I should see an order item with the status text 'In Progress'
+
   # @javascript
   # Scenario: Receiving an order confirmation email
   #   Given I have successfully placed an order
