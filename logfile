@@ -21,3 +21,4 @@ STATEMENT:  INSERT INTO "users" ("type", "provider", "uid", "name", "encrypted_p
 ERROR:  duplicate key value violates unique constraint "index_users_on_email"
 DETAIL:  Key (email)=() already exists.
 STATEMENT:  INSERT INTO "users" ("type", "provider", "uid", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"
+LOG:  stats_timestamp 2016-04-13 03:56:02.456596+01 is later than collector's time 2016-04-13 03:56:02.336466+01 for database 0

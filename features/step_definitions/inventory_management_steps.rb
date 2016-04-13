@@ -80,6 +80,7 @@ Then(/^I should not be able to save$/) do
 end
 
 Given(/^that I am signed in with twitter$/) do
+  load_categories
   visit root_path
   click_link "Sign Out" if page.has_content? "Sign Out"
   visit "/farms/auth/twitter"
@@ -100,11 +101,11 @@ When(/^I add a new product$/) do
   fill_in "item_price", with: "0.67"
   fill_in "item_quantity", with: "10"
   click_button "Create Item"
+  sleep(5);
 end
 
 Then(/^my twitter feed should have a new post with the details of the new product$/) do
   visit "https://twitter.com/farm_user"
   expect(page).to have_content "@farm_user"
-  sleep(5);
   expect(page).to have_content "10 White loaf at £0.67 each, http://bit.ly/1UZlvPK"
 end
