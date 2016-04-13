@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get "/inventory" => "items#farm_index", as: :farm_items
   get "/product/:id" => "items#product", as: :product
   get "/map" => "maps#index", as: :map
+  get "/farms/:id/items" => "farms#show", as: :farms_items, defaults: {format: :json}
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -45,6 +45,9 @@ def create_helper_objects
   Item.create(name: 'Eggs12', price: 0.20, quantity: 500, category: @category, farm: @farm)
   Item.create(name: 'Eggs13', price: 0.20, quantity: 500, category: @category, farm: @farm)
 
+  @eggs.images.create(remote_image_url: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Egg_colours.jpg")
+  @eggs.save
+
   if Restaurant.find_by(email: "1@2.com").nil?
     @restaurant1 = Restaurant.create(name: "BROOMFIELDS FARM SHOP", email: "1@2.com", password: "12345678", password_confirmation: "12345678", street: "School Plantation, ", city: "Worcester", post_code: "WR6 6NF", region: "Worcestershire", remote_logo_url: "https://unsplash.it/100/100/?random")
   else
