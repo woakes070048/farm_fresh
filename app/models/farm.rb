@@ -13,11 +13,11 @@ class Farm < User
       sales_raw[line_item.item.id] += line_item.quantity
     end
 
-    sales_as_percentages = Hash.new
 
     total_quantity = sales_raw.map{ |k, v| v}.inject(0, :+)
 
-    puts total_quantity
+
+    sales_as_percentages = Hash.new
 
     sales_raw.each do |k, v|
       sales_as_percentages[Item.find(k).name] = ((v.to_f/total_quantity) * 100).round(2)

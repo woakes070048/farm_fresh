@@ -35,7 +35,6 @@ describe Farm, type: :model do
       expect(sales.keys).to include @farm.line_items.first.item.name
       expect(sales.values).to all(be_kind_of Float)
       expect(sales.values).to all(be >= 0)
-      puts sales.inspect
     end
 
   end
