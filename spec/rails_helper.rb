@@ -78,7 +78,7 @@ def create_multiple_orders
   order1 = @restaurant1.orders.create(vat: 20, delivery_option: DeliveryOption.first)
   @restaurant1.basket_items.each do |basket_item|
     order1.line_items.build(item_id: basket_item.item_id, quantity: basket_item.quantity,
-                            statue: unshipped_status)
+                            status: unshipped_status)
   end
   order1.save
 

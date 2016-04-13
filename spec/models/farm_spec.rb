@@ -6,6 +6,7 @@ describe Farm, type: :model do
 
     before do
       create_helper_objects
+      create_multiple_orders
       @farm = Farm.find_by(email: "1@1.com")
     end
 
@@ -31,9 +32,10 @@ describe Farm, type: :model do
     it "should return a hash of where my sales from from" do
       sales = @farm.sales_percentages
       expect(sales).to be_kind_of Hash
-      expect(sales.keys).to include Farm.line_items.first.item.name
-      expect(sales.values).to all(be_kind_of Fixnum)
+      expect(sales.keys).to include @farm.line_items.first.item.name
+      expect(sales.values).to all(be_kind_of Float)
       expect(sales.values).to all(be >= 0)
+      puts sales.inspect
     end
 
   end
