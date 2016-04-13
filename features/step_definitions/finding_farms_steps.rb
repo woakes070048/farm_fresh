@@ -18,12 +18,14 @@ When(/^I navigate to farms near me$/) do
 end
 
 When(/^I click on the first farm$/) do
-  find(".viewItemsButton").first.click
+  find(".viewItemsButton").click
 end
 
 Then(/^I should see a list of all their items$/) do
+  expect(page).to have_content "Items from"
   expect(current_path).to start_with "/farms"
   expect(current_path).to end_with "items"
-  expect(page).to have_css ".itemsContainer"
-  expect(page).to have_css ".item"
+  expect(page).to have_css "#productsContainer"
+  expect(page).to have_css ".itemPrice"
+  expect(page).to have_css ".itemQty"
 end

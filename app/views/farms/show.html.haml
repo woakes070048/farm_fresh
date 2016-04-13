@@ -1,0 +1,23 @@
+
+= render "page_title", title_text: "Items from #{@farm.name}"
+
+%section{"ng-controller": "BasketsCtrl", class: "teal lighten-5"}
+  .row
+    #productsContainer{class: "col s10 offset-s1"}
+      - @items.each do |item|
+        .card
+          .product-image
+            %img{src: "#{item.images.count > 0 ? item.images.first.image : 'https://unsplash.it/200/200/?random'}", width: 200, height: 200}
+          .card-content
+            %span{class: "card-title"} #{item.name}
+            .itemDescription #{item.description}
+            .itemPrice
+              %span Price per unit
+              %span £#{item.price}
+            .itemQty
+              %span Stock:
+              %span #{item.quantity}
+          .card-action
+            %span Quantity:
+            %input{class: "productQuantityInput", type: "number", min:"0", step: "1", "ng-model": "item_quantity", "ng-init": "item_quantity=1"}
+            %a{"ng-click": "addToBasket(#{item.id})", class: "addToBasket waves-effect waves-light btn", href: "#"} Add to Basket

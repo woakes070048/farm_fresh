@@ -5,7 +5,8 @@ class FarmsController < ApplicationController
   end
 
   def show
-    @items = Farm.find(params[:id]).items.live.includes(:images)
+    @farm = Farm.find(params[:id])
+    @items = @farm.items.live.includes(:images)
   end
 
 end
