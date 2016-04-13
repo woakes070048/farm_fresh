@@ -14,6 +14,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml-rails'
 gem 'figaro'
 gem 'devise'
+gem 'omniauth-twitter'
+gem 'twitter'
 gem 'angularjs-rails'
 gem 'will_paginate'
 gem 'cocoon'

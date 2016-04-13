@@ -16,16 +16,15 @@ Feature: User Registration
       And I fill in the "farm" form correctly
     Then I should be taken to the farm dashboard
 
-  Scenario: Restaurant Signing up with twitter
-    When I navigate to the home page
-      And I click "The Sign in with twitter" button
-      And I am redirected to the twitter sign up page
-      And I click the "Accept" button
-    Then I should be taken to the restaurant home page
-
+  @javascript
   Scenario: Farm Signing up with twitter
-    When I navigate to the home page
-      And I click "The Sign in with twitter" button
-      And I am redirected to the twitter sign up page
-      And I click the "Accept" button
-    Then I should be taken to the Farm dashboard
+    When I navigate to the farm sign up page
+      And I follow "Sign in with Twitter"
+    Then I should be taken to my home page
+
+  # Scenario: Restaurant Signing up with twitter
+  #   When I navigate to the home page
+  #     And I click "Sign in with Twitter"
+  #     And I am redirected to the twitter sign up page
+  #     And I click the "Accept" button
+  #   Then I should be taken to my home page

@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
     @item = Item.create(item_params)
 
     if @item.valid?
+      current_farm.tweet("#{@item.quantity} #{@item.name} at £#{@item.price} each, http://bit.ly/1UZlvPK")
       redirect_to farm_items_path, notice: "Item created"
     else
       redirect_to farm_items_path, notice: "Could not create item"
