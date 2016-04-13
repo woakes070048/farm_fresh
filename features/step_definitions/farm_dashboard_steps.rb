@@ -4,9 +4,9 @@ Given(/^I have at least one order$/) do
 end
 
 Then(/^I should see a line graph showing sales data for the last (\d+) days$/) do |arg1|
-  expect(page).to have_css ".sevenDaySales"
+  expect(page).to have_css "#sevenDaySales"
 end
 
 Then(/^I should see a pie chart showing where my sales are coming from$/) do
-  expect(page).to have_css ".salesDistribution"
+  expect(page).to have_css "#salesDistribution"
 end

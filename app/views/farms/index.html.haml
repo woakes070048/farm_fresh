@@ -1,3 +1,15 @@
 = javascript_include_tag "https://www.google.com/jsapi", "chartkick"
 
 = render "page_title", title_text: "Farm Dashboard"
+
+.row
+  #sevenDaySales{class: "col s12 l6"}
+    .card
+      .card-content
+        %h4{class: "teal-text center-align"} You Recent Sales
+        = line_chart current_farm.line_items.group_by_day("line_items.created_at", last: 7).sum(:quantity), {library: {hAxis: {title: "Last 7 Days", format: "dd/MM"}, vAxis: {title: "Units Sold"}}}
+  #salesDistribution{class: "col s12 l6"}
+    .card
+      .card-content
+        %h4{class: "teal-text center-align"} Overall Sales
+        = pie_chart current_farm.sales_percentages

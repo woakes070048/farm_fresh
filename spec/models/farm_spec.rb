@@ -22,7 +22,7 @@ describe Farm, type: :model do
       expect(my_unshipped_orders.count).to be >= 0
     end
 
-    it "should return a list of of items that were orders from me in the last 7 days" do
+    it "should return a list of of items that were ordered from me in the last 7 days" do
       unshipped_status = Status.find_by(name: "Unshipped")
       my_new_orders = @farm.line_items.where(status: unshipped_status).recents
       expect(my_new_orders).to be_kind_of ActiveRecord::AssociationRelation
