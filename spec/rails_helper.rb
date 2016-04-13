@@ -67,6 +67,35 @@ def create_helper_objects
 
 end
 
+def create_multiple_orders
+  @in_progress_status = Status.find_by(name: "In Progress")
+  unshipped_status = Status.create(name: "Unshipped")
+  @restaurant1 = Restaurant.find_by(email: "1@2.com")
+
+  @restaurant1.basket_items.create(item: Item.first, quantity: 20)
+  @restaurant1.basket_items.create(item: Item.last, quantity: 30)
+
+  order1 = @restaurant1.orders.create(vat: 20, delivery_option: DeliveryOption.first)
+  @restaurant1.basket_items.each do |basket_item|
+    order1.line_items.build(item_id: basket_item.item_id, quantity: basket_item.quantity,
+                            statue: unshipped_status)
+  end
+  order1.save
+
+
+  @restaurant1.basket_items.create(item: Item.first, quantity: 10)
+  @restaurant1.basket_items.create(item: Item.last, quantity: 10)
+
+  order2 = @restaurant1.orders.create(vat: 20, delivery_option: DeliveryOption.first)
+  @restaurant1.basket_items.each do |basket_item|
+    order2.line_items.build(item_id: basket_item.item_id, quantity: basket_item.quantity,
+                            status: unshipped_status)
+  end
+  order2.created_at = Date.yesterday
+  order2.save
+
+end
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -114,4 +143,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.example_status_persistence_file_path = "spec/support/examples.txt"
 end

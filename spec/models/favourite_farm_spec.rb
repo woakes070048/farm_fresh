@@ -3,15 +3,10 @@ require 'rails_helper'
 describe FavouriteFarm, type: :model do
 
   before do
-    @restaurant = Restaurant.create(email:                 "1@rest.com",
+    @restaurant = Restaurant.create(email:                  "1@rest.com",
                                      name:                  "Top Pastries",
                                      password:              "12345678",
                                      password_confirmation: "12345678")
-
-    # @farm1 = Farm.create(email:                 "1@1.com",
-    #                      name:                  "Bob's Wheat Farm",
-    #                      password:              "12345678",
-    #                      password_confirmation: "12345678")
     create_helper_objects
   end
 

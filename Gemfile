@@ -27,6 +27,8 @@ gem 'gmaps4rails'
 gem 'jquery-ui-rails'
 gem 'stripe'
 gem 'materialize-sass'
+gem "chartkick"
+gem 'groupdate'
 
 group :production do
   gem 'rails_12factor'
