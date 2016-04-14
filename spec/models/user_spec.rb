@@ -86,6 +86,22 @@ describe User do
       expect(@farm1.type).to eq "Farm"
     end
 
+    it "should tweet a message" do
+      @farm1.provider = "twitter"
+      @farm1.access_token = "test"
+      @farm1.access_secret = "test"
+      expect_any_instance_of(Twitter::REST::Client).to receive(:update)
+      expect(@farm1.tweet("Test message")).to be_nil
+    end
+
+    it "should create a user from omniauth" do
+      auth = OmniAuth.config.mock_auth[:twitter]
+      user = User
+      expect(user).to receive(:where)
+      expect(Proc.new{user.from_omniauth(auth)}).to raise_error
+    end
+
   end
+
 
 end

@@ -13,10 +13,12 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'rack_session_access/capybara'
 require 'support/geocoder'
+require 'support/omniauth_test_helper'
 
 RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.include Devise::TestHelpers, type: :view
+  config.include OmniAuthTestHelper, type: :controller
 end
 
 def create_helper_objects

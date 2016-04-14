@@ -101,6 +101,17 @@ describe ItemsController, type: :controller do
       expect(response.body).to have_content "Add a New Item"
     end
 
+    it "should allow me to edit an item" do
+      get :edit, {id: @farm.items.first.id}
+      expect(response).to have_http_status(:success)
+    end
+
+    it "should allow me to update an item" do
+      params = {name: 'Eggs', farm_id: @farm.id, category_id: Category.first.id}
+      post :create, {item: params}
+      expect(response).to have_http_status(:redirect)
+    end
+
   end
 
 end

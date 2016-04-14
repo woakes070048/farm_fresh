@@ -16,7 +16,7 @@
             .field
               Distance(miles): #{farm.distance}
           .card-action
-            %a{class: "viewItemsButton waves-effect waves-light btn", href: farms_items_path(id: "#{farm.id}")} View Items
+            %a{class: "viewItemsButton waves-effect waves-light btn", href: farms_items_path(id: "#{farm.id}"), "data-no-turbolink": true} View Items
   %section
     .card
       .card-content
