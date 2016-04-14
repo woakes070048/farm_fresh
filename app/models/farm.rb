@@ -9,7 +9,7 @@ class Farm < User
     sales_raw = Hash.new
 
     line_items.each do |line_item|
-      sales_raw[line_item.item.id] = 0 if sales_raw[line_item.id].nil?
+      sales_raw[line_item.item.id] = 0 if sales_raw[line_item.item.id].nil?
       sales_raw[line_item.item.id] += line_item.quantity
     end
 
