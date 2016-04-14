@@ -725,7 +725,14 @@ def seed_items
 
   offset = 5
 
-  Farm.find([275,258,373,450,250]).each_with_index do |farm, index|
+  farms = []
+  farms << Farm.find_by(name: "Clives Fruit Farm")
+  farms << Farm.find_by(name: "Gable End Farm")
+  farms << Farm.find_by(name: "HINTON MARSH FARM")
+  farms << Farm.find_by(name: "Wayside Farm Shop")
+  farms << Farm.find_by(name: "Lower Clopton Farm Shop")
+
+  farms.each_with_index do |farm, index|
     Category.all.where("parent_id IS NOT null").offset(offset * index).limit(5).each do |category|
 
       Random.rand(1..5).times do |i|
@@ -740,9 +747,41 @@ def seed_items
   end
 end
 
-def seed_order
+def seed_orders
+
+  farms = []
+  farms << Farm.find_by(name: "Clives Fruit Farm")
+  farms << Farm.find_by(name: "Gable End Farm")
+  farms << Farm.find_by(name: "HINTON MARSH FARM")
+  farms << Farm.find_by(name: "Wayside Farm Shop")
+  farms << Farm.find_by(name: "Lower Clopton Farm Shop")
+
+  farms.each do |farm|
+
+    restaurant = Restaurant.find_by(email: "1@restaurant.com")
+    unshipped_status = Status.create(name: "Unshipped")
 
 
+    7.times do |i|
+
+      restaurant.basket_items.create(item: farm.items.shuffle.first,
+                                     quantity: Random.rand(10..50))
+      restaurant.basket_items.create(item: farm.items.shuffle.first,
+                                     quantity: Random.rand(10..50))
+
+      order = restaurant.orders.create(vat: 20, delivery_option: DeliveryOption.first)
+
+      restaurant.basket_items.each do |basket_item|
+        order.line_items.build(item_id: basket_item.item_id, quantity: basket_item.quantity,
+                                 status: unshipped_status, created_at: i.days.ago)
+      end
+
+      order.save
+      restaurant.basket_items.destroy_all
+
+    end
+
+  end
 end
 
 def seed_geocode_for_users
