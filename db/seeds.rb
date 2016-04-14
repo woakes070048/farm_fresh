@@ -756,10 +756,10 @@ def seed_orders
   farms << Farm.find_by(name: "Wayside Farm Shop")
   farms << Farm.find_by(name: "Lower Clopton Farm Shop")
 
+  unshipped_status = Status.find_by(name: "Unshipped")
   farms.each do |farm|
 
     restaurant = Restaurant.find_by(email: "1@restaurant.com")
-    unshipped_status = Status.create(name: "Unshipped")
 
 
     7.times do |i|
@@ -815,5 +815,5 @@ end
 # seed_users
 # seed_ctegories
 # seed_test_users
-seed_items
+# seed_items
 seed_orders
