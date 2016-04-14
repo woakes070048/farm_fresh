@@ -720,25 +720,28 @@ def seed_users
 end
 
 def seed_items
-  farm = Farm.first
 
-  farm.items.create(name: "Bakewell", quantity: 150, price: 0.50, category: @b,
-                    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
-  farm.items.create(name: "Bakewell", quantity: 900, price: 0.67, category: @b,
-                    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
-  farm.items.create(name: "Bakewell", quantity: 30, price: 0.99, category: @b,
-                    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
-  farm.items.create(name: "Bakewell", quantity: 67, price: 0.20, category: @b,
-                    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
+  Item.destroy_all
 
-  farm.items.create(name: "Mature Cheddar", quantity: 78, price: 2.99, category: @c,
-                    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
-  farm.items.create(name: "Ham", quantity: 44, price: 1.79, category: @d,
-                    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
-  farm.items.create(name: "Apple Cider", quantity: 34, price: 1.39, category: @e,
-                    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
-  farm.items.create(name: "Steak", quantity: 22, price: 4.88, category: @a,
-                    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
+  offset = 5
+
+  Farm.find([275,258,373,450,250]).each_with_index do |farm, index|
+    Category.all.where("parent_id IS NOT null").offset(offset * index).limit(5).each do |category|
+
+      Random.rand(1..5).times do |i|
+        new_farm = farm.items.create(name: "#{category.name} item #{i}", quantity: Random.rand(10..900),
+                                     price: Random.rand(0.1..10.0).round(2),
+                                     category: category,
+                                     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quisquam, eius nobis neque amet fuga.")
+        new_farm.images.create(remote_image_url: "http://loremflickr.com/200/200/#{category.name}")
+        new_farm.images.create(remote_image_url: "http://loremflickr.com/200/200/#{category.name}")
+      end
+    end
+  end
+end
+
+def seed_order
+
 
 end
 
@@ -769,8 +772,9 @@ end
 
 # seed_geocode_for_users
 
-clean_database
-seed_users
-seed_ctegories
+# clean_database
+# seed_users
+# seed_ctegories
 # seed_test_users
 seed_items
+seed_orders
