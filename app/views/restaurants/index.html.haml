@@ -1,12 +1,9 @@
 
 = render "page_title", title_text: "Products"
 
-
 %div{id: "productsContainer", "ng-controller": "CategoriesCtrl", class: "teal lighten-5"}
 
   %aside
-
-
     %ul{class: "collection with-header"}
       %li{class: "collection-header"}
         #categoryHeader Categories
@@ -15,14 +12,12 @@
       %li
         = link_to "{{category.name}}", "#!", class: "categoryLink collection-item", "ng-click": "getCategories(category.id, category)", "ng-repeat": "category in categories"
 
-
   %section
     .row
       %h4{class: "teal-text col s4 offset-s1", "ng-bind": "currentCategoryTitle"}
     .row
       %h5{class: "teal-text col s10 offset-s1", "ng-show": "items.length == 0"}
         There are currently no items in this category.
-
 
     .row
       #selectionForm{class: "col s3 push-s8", "ng-show": "items.length > 0"}

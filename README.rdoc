@@ -14,7 +14,7 @@ The main technologies used includes:
 * Google maps to find local farmers
 * Amazon S3 for file storage
 
-A link to the live preview of the site is coming soon
+Preview on [heroku](https://farm-fresh.herokuapp.com)
 
 The pivotal tracker project is here[https://www.pivotaltracker.com/n/projects/1567387]
 

@@ -1,6 +1,8 @@
 
 
-  app.controller("CategoriesCtrl", ["$rootScope", "$scope", "Category", "Item", function($rootScope, $scope, Category, Item) {
+  app.controller("CategoriesCtrl", ["$rootScope", "$scope", "Category", "Item",
+  function($rootScope, $scope, Category, Item) {
+
     $scope.sortList = ["Price", "Quantity", "Distance"];
 
     $scope.getCategories = function(parent_id, parent) {

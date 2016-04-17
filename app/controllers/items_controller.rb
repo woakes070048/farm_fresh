@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
   def index
     sort_column =
       params[:sort_option].nil? ? :price : params[:sort_option].strip.downcase
-    #TODO: Handle sortby distance after geocoder is setup
 
     if params[:category_id].nil?
       @items = Item.order({ sort_column.to_sym => "DESC" }).
