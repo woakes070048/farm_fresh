@@ -816,5 +816,5 @@ end
 # seed_users
 # seed_ctegories
 # seed_test_users
-seed_items
+# seed_items
 seed_orders
